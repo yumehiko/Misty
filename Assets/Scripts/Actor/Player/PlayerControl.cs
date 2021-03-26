@@ -17,6 +17,10 @@ public class PlayerControl : MonoBehaviour
         InputMoveControl(inputDirection);
     }
 
+    /// <summary>
+    /// キー入力からActorDirectionを返す。
+    /// </summary>
+    /// <returns></returns>
     private ActorDirection CheckInputDirection()
     {
         if (Input.GetKeyDown(KeyCode.W))

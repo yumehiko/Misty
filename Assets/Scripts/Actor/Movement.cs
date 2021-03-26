@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     {
         Vector2 angle = DirectionToVector2(direction);
 
-        float unit = 1.0f;
+        float unit = 1.28f;
         turnAct.ActTweener = transform.DOMove(angle * unit, duration)
             .SetRelative()
             .OnComplete(() => turnAct.OnActComplete());

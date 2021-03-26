@@ -14,7 +14,6 @@ public class TurnAct : MonoBehaviour
 
     public Tweener ActTweener = default;
 
-
     /// <summary>
     /// 動作を完了した時。
     /// </summary>
