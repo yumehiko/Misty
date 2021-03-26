@@ -5,51 +5,83 @@ using UniRx;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] private TurnAct turnAct = default;
     [SerializeField] private Movement movement = default;
+    [SerializeField] private FaceDirection faceDirection = default;
+
+    private ActorDirection inputBuffer = ActorDirection.None;
 
     private void Update()
     {
-        InputMoveControl();
+        ActorDirection inputDirection = CheckInputDirection();
+        InputMoveControl(inputDirection);
+    }
+
+    private ActorDirection CheckInputDirection()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            return ActorDirection.Up;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            return ActorDirection.Left;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            return ActorDirection.Down;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            return ActorDirection.Right;
+        }
+
+        return ActorDirection.None;
     }
 
     /// <summary>
     /// 入力の確認と先行入力の登録。
     /// </summary>
-    private void InputMoveControl()
+    private void InputMoveControl(ActorDirection direction)
     {
-        ActorDirection inputDirection = ActorDirection.None;
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            inputDirection = ActorDirection.Up;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            inputDirection = ActorDirection.Left;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            inputDirection = ActorDirection.Down;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            inputDirection = ActorDirection.Right;
-        }
-
-        if(inputDirection == ActorDirection.None)
+        if(direction == ActorDirection.None)
         {
             return;
         }
 
-        
-        //動作中の場合、先行入力しておく。
-        if (movement.IsMotioning())
+        if (turnAct.IsActing())
         {
-            _ = movement.MoveCompleteEvent
+            inputBuffer = direction;
+            turnAct.ActCompleteEvent
                 .First()
-                .Subscribe(_ => movement.MoveToDirection(inputDirection));
+                .Subscribe(_ => SolveBufferInput());
+            return;
         }
-        
-        movement.MoveToDirection(inputDirection);
+
+        if (direction != faceDirection.Direction)
+        {
+            faceDirection.TurnToDirection(direction, 0.1f);
+        }
+        else
+        {
+            movement.MoveToDirection(direction, 0.2f);
+        }
+    }
+
+    /// <summary>
+    /// 先行入力を保持している場合、それを入力する。
+    /// </summary>
+    private void SolveBufferInput()
+    {
+        if(inputBuffer == ActorDirection.None)
+        {
+            return;
+        }
+
+        InputMoveControl(inputBuffer);
+        inputBuffer = ActorDirection.None;
     }
 }
