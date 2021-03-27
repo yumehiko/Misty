@@ -15,9 +15,16 @@ public enum ActorDirection
 /// <summary>
 /// 顔の向く方向。
 /// </summary>
-public class FaceDirection : MonoBehaviour
+public class FaceDirection
 {
-    [SerializeField] private TurnAct turnAct = default;
+    private TurnAct turnAct = default;
+    private Transform transform = default;
+
+    public FaceDirection(TurnAct turnAct, Transform transform)
+    {
+        this.turnAct = turnAct;
+        this.transform = transform;
+    }
 
     public ActorDirection Direction { get; private set; } = ActorDirection.Up;
 

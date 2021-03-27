@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UniRx;
 
 /// <summary>
 /// このゲームオブジェクトを動かす。
 /// </summary>
-public class Movement : MonoBehaviour
+public class Movement
 {
-    [SerializeField] private TurnAct turnAct = default;
+    private TurnAct turnAct = default;
+    private Transform transform = default;
+
+    public Movement(TurnAct turnAct, Transform transform)
+    {
+        this.turnAct = turnAct;
+        this.transform = transform;
+    }
 
     /// <summary>
     /// 現在の位置から、指定方向に1単位進む。

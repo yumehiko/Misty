@@ -7,7 +7,7 @@ using UniRx;
 /// <summary>
 /// ターンごとの行動の、開始と終了の判定を行う。
 /// </summary>
-public class TurnAct : MonoBehaviour
+public class TurnAct
 {
     private Subject<Unit> actCompleteEvent = new Subject<Unit>();
     public System.IObservable<Unit> ActCompleteEvent => actCompleteEvent;

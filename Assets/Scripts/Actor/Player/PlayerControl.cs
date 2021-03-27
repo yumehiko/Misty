@@ -5,9 +5,7 @@ using UniRx;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private TurnAct turnAct = default;
-    [SerializeField] private Movement movement = default;
-    [SerializeField] private FaceDirection faceDirection = default;
+    [SerializeField] private Player player = default;
 
     private ActorDirection inputBuffer = ActorDirection.None;
 
@@ -56,22 +54,22 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (turnAct.IsActing)
+        if (player.TurnAct.IsActing)
         {
             inputBuffer = direction;
-            turnAct.ActCompleteEvent
+            player.TurnAct.ActCompleteEvent
                 .First()
                 .Subscribe(_ => SolveBufferInput());
             return;
         }
 
-        if (direction != faceDirection.Direction)
+        if (direction != player.FaceDirection.Direction)
         {
-            faceDirection.TurnToDirection(direction, 0.1f);
+            player.FaceDirection.TurnToDirection(direction, 0.1f);
         }
         else
         {
-            movement.MoveToDirection(direction, 0.2f);
+            player.Movement.MoveToDirection(direction, 0.2f);
         }
     }
 
