@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (turnAct.IsActing())
+        if (turnAct.IsActing)
         {
             inputBuffer = direction;
             turnAct.ActCompleteEvent

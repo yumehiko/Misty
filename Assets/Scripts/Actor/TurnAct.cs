@@ -15,20 +15,17 @@ public class TurnAct : MonoBehaviour
     public Tweener ActTweener = default;
 
     /// <summary>
+    /// 動作中か。
+    /// </summary>
+    /// <returns></returns>
+    public bool IsActing => ActTweener.IsActive();
+
+    /// <summary>
     /// 動作を完了した時。
     /// </summary>
     public void OnActComplete()
     {
         ActTweener.Kill();
         actCompleteEvent.OnNext(Unit.Default);
-    }
-
-    /// <summary>
-    /// 動作中か。
-    /// </summary>
-    /// <returns></returns>
-    public bool IsActing()
-    {
-        return ActTweener.IsActive();
     }
 }
