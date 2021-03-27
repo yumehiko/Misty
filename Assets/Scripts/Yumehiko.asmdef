@@ -2,7 +2,8 @@
     "name": "Yumehiko",
     "references": [
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:6ddb794efc18a4649b2b227ffc0e2ea4"
+        "GUID:6ddb794efc18a4649b2b227ffc0e2ea4",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
