@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+/// <summary>
+/// 入力を確認し、プレイヤーを操作する。
+/// </summary>
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private Player player = default;

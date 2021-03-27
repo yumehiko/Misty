@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Transform sightTransform = default;
+
     private TurnAct turnAct = default;
     public TurnAct TurnAct => turnAct;
 
@@ -15,8 +17,6 @@ public class Player : MonoBehaviour
 
     private FaceDirection faceDirection = default;
     public FaceDirection FaceDirection => faceDirection;
-
-    [SerializeField] private Transform sightTransform = default;
 
     private void Awake()
     {

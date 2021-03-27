@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// Actorの概念的な上下左右4方向を示す。
+/// </summary>
 public enum ActorDirection
 {
     None,
@@ -51,7 +54,7 @@ public class FaceDirection
     /// </summary>
     /// <param name="direction"></param>
     /// <returns></returns>
-    public static float DirectionToDegree(ActorDirection direction)
+    private float DirectionToDegree(ActorDirection direction)
     {
         switch (direction)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 /// <summary>
-/// このゲームオブジェクトを動かす。
+/// 指定されたTransformを動かす。
 /// </summary>
 public class Movement
 {
@@ -23,9 +23,9 @@ public class Movement
     /// <param name="point"></param>
     public void MoveToDirection(ActorDirection direction, float duration)
     {
+        const float unit = 1.28f;
         Vector2 angle = DirectionToVector2(direction);
 
-        float unit = 1.28f;
         turnAct.ActTweener = transform.DOMove(angle * unit, duration)
             .SetRelative()
             .OnComplete(() => turnAct.OnActComplete());
@@ -36,7 +36,7 @@ public class Movement
     /// </summary>
     /// <param name="direction"></param>
     /// <returns></returns>
-    public static Vector2 DirectionToVector2(ActorDirection direction)
+    private Vector2 DirectionToVector2(ActorDirection direction)
     {
         switch (direction)
         {
