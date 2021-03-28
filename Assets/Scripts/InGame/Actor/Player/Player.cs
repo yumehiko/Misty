@@ -20,6 +20,14 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Init();
+    }
+
+    /// <summary>
+    /// 初期化。必要なクラスを生成。
+    /// </summary>
+    private void Init()
+    {
         turnAct = new TurnAct();
         movement = new Movement(turnAct, transform);
         faceDirection = new FaceDirection(turnAct, sightTransform);

@@ -1,7 +1,8 @@
 {
-    "name": "Tests",
+    "name": "IntegrationTest",
     "references": [
         "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
         "Yumehiko"
     ],
     "includePlatforms": [],
