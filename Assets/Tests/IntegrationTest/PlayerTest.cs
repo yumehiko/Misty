@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace Tests
 {
@@ -19,21 +19,15 @@ namespace Tests
             _ = SetObject();
         }
 
-        private async Task SetObject()
+        private async UniTask SetObject()
         {
             var handle = Addressables.InstantiateAsync("Actors/Player.prefab");
-            await handle.Task;
+            //ロード完了をUnitaskでawaitする。
+            await handle.ToUniTask();
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log("できた");
                 playerObject = handle.Result;
             }
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Addressables.ReleaseInstance(playerObject);
         }
 
         [UnityTest]

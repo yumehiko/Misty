@@ -5,7 +5,8 @@
         "UnityEditor.TestRunner",
         "Yumehiko",
         "Unity.Addressables",
-        "Unity.ResourceManager"
+        "Unity.ResourceManager",
+        "UniTask"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
