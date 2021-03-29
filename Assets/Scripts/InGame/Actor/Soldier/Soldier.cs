@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Soldier : MonoBehaviour
 {
+    [SerializeField] private LayerMask moveMask = default;
+
     private TurnAct turnAct = default;
     public TurnAct TurnAct => turnAct;
 
@@ -15,7 +17,15 @@ public class Soldier : MonoBehaviour
 
     private void Awake()
     {
+        Init();
+    }
+
+    /// <summary>
+    /// 初期化。
+    /// </summary>
+    private void Init()
+    {
         turnAct = new TurnAct();
-        movement = new Movement(turnAct, transform);
+        movement = new Movement(turnAct, transform, moveMask);
     }
 }

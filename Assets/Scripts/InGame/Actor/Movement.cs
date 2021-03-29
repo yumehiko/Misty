@@ -8,13 +8,15 @@ using DG.Tweening;
 /// </summary>
 public class Movement
 {
-    private TurnAct turnAct = default;
-    private Transform transform = default;
+    private TurnAct turnAct;
+    private Transform transform;
+    private LayerMask moveMask;
 
-    public Movement(TurnAct turnAct, Transform transform)
+    public Movement(TurnAct turnAct, Transform transform, LayerMask moveMask)
     {
         this.turnAct = turnAct;
         this.transform = transform;
+        this.moveMask = moveMask;
     }
 
     /// <summary>
@@ -26,9 +28,32 @@ public class Movement
         const float unit = 1.28f;
         Vector2 angle = DirectionToVector2(direction);
 
+        if(!CheckCanMove(angle))
+        {
+            //TODO ここで壁にぶつかるアニメーションとかを入れておく
+            Debug.Log("CantMove");
+            return;
+        }
+
         turnAct.ActTweener = transform.DOMove(angle * unit, duration)
             .SetRelative()
             .OnComplete(() => turnAct.OnActComplete());
+    }
+
+    /// <summary>
+    /// 指定された座標に進めるかチェックする。
+    /// </summary>
+    /// <param name="moveOffset">現在地から目標地までの方向と距離。</param>
+    /// <returns>進めるならTrue</returns>
+    private bool CheckCanMove(Vector2 angle)
+    {
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, (Vector2)transform.position + angle, moveMask);
+        if(hit.collider != null)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     /// <summary>

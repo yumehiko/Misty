@@ -8,6 +8,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform sightTransform = default;
+    [SerializeField] private LayerMask moveMask = default;
 
     private TurnAct turnAct = default;
     public TurnAct TurnAct => turnAct;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
     private void Init()
     {
         turnAct = new TurnAct();
-        movement = new Movement(turnAct, transform);
+        movement = new Movement(turnAct, transform, moveMask);
         faceDirection = new FaceDirection(turnAct, sightTransform);
     }
 }

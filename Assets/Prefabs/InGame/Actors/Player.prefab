@@ -88,7 +88,7 @@ MonoBehaviour:
   fovLight: {fileID: 2721249651940322516}
   sightMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!1 &2721249652356966454
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightTransform: {fileID: 2721249651940322519}
+  moveMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &2721249653345871844
 MonoBehaviour:
   m_ObjectHideFlags: 0

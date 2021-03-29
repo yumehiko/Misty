@@ -70,41 +70,4 @@ public class EvilSight : MonoBehaviour
 
         return true;
     }
-
-    public bool AppearCheckTestA(float fovHalf, Vector2 forward, Vector2 playerPosition, Vector2 targetPosition)
-    {
-        Vector2 direction = (playerPosition - targetPosition).normalized;
-        if (!(Vector2.Angle(direction, forward) <= fovHalf))
-        {
-            return false;
-        }
-
-        RaycastHit2D hit = Physics2D.Linecast(playerPosition, targetPosition, sightMask);
-
-        if (hit.collider != null)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    public bool AppearCheckTestB(float fovHalf, Vector2 forward, Vector2 playerPosition, Vector2 targetPosition)
-    {
-        Vector2 direction = (playerPosition - targetPosition).normalized;
-        if (!(Vector2.Angle(direction, forward) <= fovHalf))
-        {
-            return false;
-        }
-
-        //RaycastHit2D hit = Physics2D.Linecast(playerPosition, targetPosition, sightMask);
-        int result = Physics2D.LinecastNonAlloc(playerPosition, targetPosition, null, sightMask);
-
-        if (result > 0)
-        {
-            return false;
-        }
-
-        return true;
-    }
 }
