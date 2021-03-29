@@ -9,6 +9,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class EvilSight : MonoBehaviour
 {
     [SerializeField] private Light2D fovLight = default;
+    [SerializeField] private LayerMask sightMask = default;
     private List<SeeTarget> seeTargets = new List<SeeTarget>();
 
     private void Update()
@@ -60,15 +61,49 @@ public class EvilSight : MonoBehaviour
             return false;
         }
 
-        /*
-        //TODO 対象地点までに壁があるなら、視界はつながらない。
-        if()
+        RaycastHit2D hit = Physics2D.Linecast(playerPosition, targetPosition, sightMask);
+
+        if (hit.collider != null) 
         {
-            // LineCastで到達チェック。
-            // 壁にぶつかるならfalseでreturn。
             return false;
         }
-        */
+
+        return true;
+    }
+
+    public bool AppearCheckTestA(float fovHalf, Vector2 forward, Vector2 playerPosition, Vector2 targetPosition)
+    {
+        Vector2 direction = (playerPosition - targetPosition).normalized;
+        if (!(Vector2.Angle(direction, forward) <= fovHalf))
+        {
+            return false;
+        }
+
+        RaycastHit2D hit = Physics2D.Linecast(playerPosition, targetPosition, sightMask);
+
+        if (hit.collider != null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public bool AppearCheckTestB(float fovHalf, Vector2 forward, Vector2 playerPosition, Vector2 targetPosition)
+    {
+        Vector2 direction = (playerPosition - targetPosition).normalized;
+        if (!(Vector2.Angle(direction, forward) <= fovHalf))
+        {
+            return false;
+        }
+
+        //RaycastHit2D hit = Physics2D.Linecast(playerPosition, targetPosition, sightMask);
+        int result = Physics2D.LinecastNonAlloc(playerPosition, targetPosition, null, sightMask);
+
+        if (result > 0)
+        {
+            return false;
+        }
 
         return true;
     }

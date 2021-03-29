@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class FaceDirectionTest
+    public class PlayerUnitTest
     {
         private FaceDirection faceDirection;
 
