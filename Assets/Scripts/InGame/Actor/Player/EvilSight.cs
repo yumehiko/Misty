@@ -44,6 +44,7 @@ public class EvilSight : MonoBehaviour
         {
             if(AppearCheck(fovHalf, forward, playerPosition, seeTarget.transform.position))
             {
+                //必要なときtrueにするだけ。falseに戻すかどうかはseeTarget側で制御する。
                 seeTarget.IsSeeing = true;
             }
         }
@@ -55,6 +56,8 @@ public class EvilSight : MonoBehaviour
     /// <returns>到達するならtrue</returns>
     private bool AppearCheck(float fovHalf, Vector2 forward, Vector2 playerPosition, Vector2 targetPosition)
     {
+        //TODO 二つのチェックを分けるべきか？
+
         Vector2 direction = (playerPosition - targetPosition).normalized;
         if (!(Vector2.Angle(direction, forward) <= fovHalf))
         {

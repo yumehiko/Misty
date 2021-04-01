@@ -25,9 +25,10 @@ public class Movement
     /// <param name="point"></param>
     public void MoveToDirection(ActorDirection direction, float duration)
     {
-        const float unit = 1.28f;
+        const float unit = 0.96f;
         Vector2 angle = DirectionToVector2(direction);
 
+        //TODO 埋めるべきではないかも。個別に呼び出すべきか。
         if(!CheckCanMove(angle))
         {
             //TODO ここで壁にぶつかるアニメーションとかを入れておく
@@ -48,12 +49,7 @@ public class Movement
     private bool CheckCanMove(Vector2 angle)
     {
         RaycastHit2D hit = Physics2D.Linecast(transform.position, (Vector2)transform.position + angle, moveMask);
-        if(hit.collider != null)
-        {
-            return false;
-        }
-
-        return true;
+        return hit.collider == null;
     }
 
     /// <summary>
