@@ -1,0 +1,286 @@
+
+PillarDoor.png
+size: 1926,511
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Black/Eye
+  rotate: true
+  xy: 1852, 373
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Black/EyeClose
+  rotate: false
+  xy: 692, 64
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Black/Pillar
+  rotate: false
+  xy: 1650, 409
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Black/Top
+  rotate: false
+  xy: 842, 309
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Black/Under
+  rotate: false
+  xy: 2, 301
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+Blue/Eye
+  rotate: false
+  xy: 2, 17
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Blue/EyeClose
+  rotate: false
+  xy: 692, 37
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Blue/Pillar
+  rotate: false
+  xy: 1650, 307
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Blue/Top
+  rotate: false
+  xy: 842, 107
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Blue/Under
+  rotate: false
+  xy: 2, 91
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+Cyan/Eye
+  rotate: false
+  xy: 1650, 29
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Cyan/EyeClose
+  rotate: false
+  xy: 1650, 2
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Cyan/Pillar
+  rotate: false
+  xy: 1650, 205
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Cyan/Top
+  rotate: false
+  xy: 1044, 309
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Cyan/Under
+  rotate: false
+  xy: 212, 301
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+Indigo/Eye
+  rotate: true
+  xy: 1852, 235
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Indigo/EyeClose
+  rotate: true
+  xy: 1852, 97
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Indigo/Pillar
+  rotate: false
+  xy: 1650, 103
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Indigo/Top
+  rotate: false
+  xy: 1044, 107
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Indigo/Under
+  rotate: false
+  xy: 212, 91
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+Orange/Eye
+  rotate: false
+  xy: 140, 17
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Orange/EyeClose
+  rotate: true
+  xy: 1879, 97
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Orange/Pillar
+  rotate: false
+  xy: 842, 5
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Orange/Top
+  rotate: false
+  xy: 1246, 309
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Orange/Under
+  rotate: false
+  xy: 422, 301
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+Red/Eye
+  rotate: false
+  xy: 278, 17
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Red/EyeClose
+  rotate: false
+  xy: 692, 10
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Red/Pillar
+  rotate: false
+  xy: 1044, 5
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Red/Top
+  rotate: false
+  xy: 1246, 107
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Red/Under
+  rotate: false
+  xy: 422, 91
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+White/Eye
+  rotate: false
+  xy: 416, 17
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+White/EyeClose
+  rotate: false
+  xy: 1788, 70
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+White/Pillar
+  rotate: false
+  xy: 1246, 5
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+White/Top
+  rotate: false
+  xy: 1448, 309
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+White/Under
+  rotate: false
+  xy: 632, 301
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
+Yellow/Eye
+  rotate: false
+  xy: 554, 17
+  size: 136, 72
+  orig: 138, 74
+  offset: 1, 1
+  index: -1
+Yellow/EyeClose
+  rotate: false
+  xy: 1788, 43
+  size: 136, 25
+  orig: 138, 27
+  offset: 1, 1
+  index: -1
+Yellow/Pillar
+  rotate: false
+  xy: 1448, 5
+  size: 200, 100
+  orig: 202, 102
+  offset: 1, 1
+  index: -1
+Yellow/Top
+  rotate: false
+  xy: 1448, 107
+  size: 200, 200
+  orig: 202, 202
+  offset: 1, 1
+  index: -1
+Yellow/Undar
+  rotate: false
+  xy: 632, 91
+  size: 208, 208
+  orig: 210, 210
+  offset: 1, 1
+  index: -1
