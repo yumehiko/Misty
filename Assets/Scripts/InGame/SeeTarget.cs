@@ -4,12 +4,16 @@ using UnityEngine;
 using UniRx;
 
 /// <summary>
-/// 邪眼でみられたとき、反応する機構。
+/// 邪眼でみられたとき、反応して視界イベントを発行する。
 /// </summary>
 public class SeeTarget : MonoBehaviour
 {
-    private Subject<bool> seeingEvent = new Subject<bool>();
-    public System.IObservable<bool> SeeingEvent => seeingEvent;
+    protected Subject<bool> seeEvent = new Subject<bool>();
+
+    /// <summary>
+    /// スイッチがOnかOffに切り替わったとき、OnNextを発行。
+    /// </summary>
+    public System.IObservable<bool> SeeEvent => seeEvent;
 
     public bool IsSeeing = false;
     private bool prevSeeing = false;
@@ -19,9 +23,11 @@ public class SeeTarget : MonoBehaviour
         RegisterEvilSights();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         //TODO 多分Turn単位の処理に変えられる。
+        //プレイヤーが移動を終えた時点で視界の状態を確認するとか……。
+        //そしたらLateUpdateは使わなくてすむかも。
         CheckSeeingChange();
     }
 
@@ -32,7 +38,7 @@ public class SeeTarget : MonoBehaviour
     {
         if (IsSeeing != prevSeeing)
         {
-            seeingEvent.OnNext(IsSeeing);
+            seeEvent.OnNext(IsSeeing);
             prevSeeing = IsSeeing;
         }
 
@@ -40,7 +46,7 @@ public class SeeTarget : MonoBehaviour
     }
 
     /// <summary>
-    /// シーン上の邪眼者に自身を登録。
+    /// シーン上の邪眼者に自身を対象として登録。
     /// </summary>
     private void RegisterEvilSights()
     {
