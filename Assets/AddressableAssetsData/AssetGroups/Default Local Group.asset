@@ -16,13 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: c5f4ea64b137f400dbbf1a6fe9493247
-  m_SerializeEntries:
-  - m_GUID: 9a3fe9bffc09e4f88ba2f8ea61a50113
-    m_Address: Actors/Player.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 387622f4fecc54cf78516b5a4cecf641, type: 2}
   m_SchemaSet:

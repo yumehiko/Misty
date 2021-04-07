@@ -9,6 +9,7 @@ using UniRx;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private Player player = default;
+    [SerializeField] private Interactor interactor = default;
 
     private ActorDirection inputBuffer = ActorDirection.None;
 
@@ -16,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     {
         ActorDirection inputDirection = CheckInputDirection();
         InputMoveControl(inputDirection);
+        InputInteract();
     }
 
     /// <summary>
@@ -74,6 +76,26 @@ public class PlayerControl : MonoBehaviour
         {
             player.Movement.MoveToDirection(direction, 0.2f);
         }
+    }
+
+    /// <summary>
+    /// インタラクトキーを入力する。
+    /// </summary>
+    private void InputInteract()
+    {
+        if (!Input.GetKeyDown(KeyCode.F))
+        {
+            return;
+        }
+
+        //インタラクト対象が無い場合、無視。
+        if (!interactor.HasTouchable())
+        {
+            //音とか鳴らすかも。
+            return;
+        }
+
+        interactor.TryInteract();
     }
 
     /// <summary>
