@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 /// <summary>
 /// 兵士。プレイヤーを捕獲しようと接近するActor。
@@ -8,6 +9,7 @@ using UnityEngine;
 public class Soldier : MonoBehaviour
 {
     [SerializeField] private LayerMask moveMask = default;
+    [SerializeField] private ActorAnimeController animeController = default;
 
     private TurnAct turnAct = default;
     public TurnAct TurnAct => turnAct;
@@ -26,6 +28,6 @@ public class Soldier : MonoBehaviour
     private void Init()
     {
         turnAct = new TurnAct();
-        movement = new Movement(turnAct, transform, moveMask);
+        movement = new Movement(turnAct, transform, moveMask, animeController);
     }
 }

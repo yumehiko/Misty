@@ -22,11 +22,13 @@ public class FaceDirection
 {
     private TurnAct turnAct = default;
     private Transform transform = default;
+    private ActorAnimeController animeController = default;
 
-    public FaceDirection(TurnAct turnAct, Transform transform)
+    public FaceDirection(TurnAct turnAct, Transform transform, ActorAnimeController animeController)
     {
         this.turnAct = turnAct;
         this.transform = transform;
+        this.animeController = animeController;
     }
 
     public ActorDirection Direction { get; private set; } = ActorDirection.Up;
@@ -47,6 +49,7 @@ public class FaceDirection
             .OnComplete(() => turnAct.OnActComplete());
 
         Direction = direction;
+        animeController.SkeletonFlip(direction);
     }
 
     /// <summary>

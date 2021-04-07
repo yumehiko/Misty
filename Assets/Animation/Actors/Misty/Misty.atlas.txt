@@ -1,0 +1,83 @@
+
+Misty.png
+size: 157,423
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ArmLeft
+  rotate: false
+  xy: 143, 30
+  size: 12, 31
+  orig: 14, 33
+  offset: 1, 1
+  index: -1
+ArmRight
+  rotate: false
+  xy: 144, 135
+  size: 11, 31
+  orig: 13, 33
+  offset: 1, 1
+  index: -1
+Body
+  rotate: true
+  xy: 2, 10
+  size: 51, 63
+  orig: 53, 65
+  offset: 1, 1
+  index: -1
+EyeClose
+  rotate: false
+  xy: 2, 63
+  size: 140, 103
+  orig: 142, 105
+  offset: 1, 1
+  index: -1
+EyeOpen
+  rotate: false
+  xy: 2, 168
+  size: 144, 103
+  orig: 146, 105
+  offset: 1, 1
+  index: -1
+Head
+  rotate: true
+  xy: 2, 273
+  size: 148, 151
+  orig: 150, 153
+  offset: 1, 1
+  index: -1
+LegLeft
+  rotate: true
+  xy: 106, 34
+  size: 27, 35
+  orig: 29, 37
+  offset: 1, 1
+  index: -1
+LegRight
+  rotate: true
+  xy: 67, 37
+  size: 24, 37
+  orig: 26, 39
+  offset: 1, 1
+  index: -1
+Neck
+  rotate: true
+  xy: 67, 7
+  size: 28, 32
+  orig: 30, 34
+  offset: 1, 1
+  index: -1
+ShoulderLeft
+  rotate: false
+  xy: 134, 2
+  size: 21, 26
+  orig: 23, 28
+  offset: 1, 1
+  index: -1
+ShoulderRight
+  rotate: true
+  xy: 101, 10
+  size: 22, 31
+  orig: 24, 33
+  offset: 1, 1
+  index: -1

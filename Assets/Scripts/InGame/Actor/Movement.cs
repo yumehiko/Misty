@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Spine.Unity;
 
 /// <summary>
 /// 指定されたTransformを動かす。
@@ -11,12 +12,14 @@ public class Movement
     private TurnAct turnAct;
     private Transform transform;
     private LayerMask moveMask;
+    private ActorAnimeController animeController;
 
-    public Movement(TurnAct turnAct, Transform transform, LayerMask moveMask)
+    public Movement(TurnAct turnAct, Transform transform, LayerMask moveMask, ActorAnimeController animeController)
     {
         this.turnAct = turnAct;
         this.transform = transform;
         this.moveMask = moveMask;
+        this.animeController = animeController;
     }
 
     /// <summary>
@@ -35,6 +38,9 @@ public class Movement
             Debug.Log("CantMove");
             return;
         }
+
+        animeController.SkeletonFlip(direction);
+        animeController.StepAnime();
 
         turnAct.ActTweener = transform.DOMove(angle * unit, duration)
             .SetRelative()
