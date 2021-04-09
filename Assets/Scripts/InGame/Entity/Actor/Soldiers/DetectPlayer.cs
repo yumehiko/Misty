@@ -23,29 +23,27 @@ public class DetectPlayer : MonoBehaviour
     [SerializeField] private LayerMask sightMask = default;
 
     /// <summary>
-    /// 保持者。
-    /// </summary>
-    [SerializeField] private Actor actor = default;
-
-    /// <summary>
     /// ビックリマークUI。
     /// </summary>
     [SerializeField] private Image exclamationMark = default;
 
     [SerializeField] private ActorAnimeController actorAnime = default;
 
-    private System.IDisposable disposable = default;
-
     private void Awake()
     {
-        SetDiscoverStat();
+        playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     /// <summary>
     /// プレイヤーを発見できるか確認する。
     /// </summary>
-    private void DetectionPlayer()
+    public void DetectionPlayer()
     {
+        if(IsDiscovered)
+        {
+            return;
+        }
+
         IsDiscovered = AppearCheck(transform.position, playerTransform.position);
 
         //見つけたとき。
@@ -54,18 +52,7 @@ public class DetectPlayer : MonoBehaviour
             exclamationMark.color = Color.white;
             exclamationMark.DOFade(0.0f, 0.5f);
             actorAnime.SkeletonFlip(XDiffToDirection(transform.position, playerTransform.position));
-            disposable.Dispose();
         }
-    }
-
-    /// <summary>
-    /// 発見状態をリセットし、再度発見可能状態へ戻る。
-    /// </summary>
-    private void SetDiscoverStat()
-    {
-        disposable = actor.OnActEnd.Subscribe(_ => DetectionPlayer());
-        playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        DetectionPlayer();
     }
 
     /// <summary>

@@ -2,48 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using DG.Tweening;
 
-/// <summary>
-/// キャラクターのAction（演技）の管理。
-/// </summary>
-public class Actor : MonoBehaviour
+public abstract class Actor : MonoBehaviour
 {
-    protected Subject<Unit> onActStart = new Subject<Unit>();
-    /// <summary>
-    /// ターン動作開始時。
-    /// </summary>
-    public System.IObservable<Unit> OnActStart => onActStart;
-
-    protected Subject<Unit> onActEnd = new Subject<Unit>();
-    /// <summary>
-    /// ターン動作終了時。
-    /// </summary>
-    public System.IObservable<Unit> OnActEnd => onActEnd;
-
-    public Tweener ActTweener = default;
-
-    /// <summary>
-    /// 動作中か。
-    /// </summary>
-    /// <returns></returns>
-    public bool IsActing => ActTweener.IsActive();
-
-    /// <summary>
-    /// 動作開始時。
-    /// </summary>
-    public void ActStart()
+    private void Awake()
     {
-        onActStart.OnNext(Unit.Default);
+        SubscribeTurnManager();
     }
 
     /// <summary>
-    /// 動作を完了した時。
+    /// ターンマネージャーのターンイベントを購読し、時間の流れを受け取る。
     /// </summary>
-    public void ActEnd()
+    protected void SubscribeTurnManager()
     {
-        ActTweener.Kill();
-        onActEnd.OnNext(Unit.Default);
+        TurnManager turnManager = GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
+        turnManager.OnTurnStart.Subscribe(_ => TurnStart());
+        turnManager.OnTurnEnd.Subscribe(_ => TurnEnd());
     }
 
+    /// <summary>
+    /// ターン開始時。
+    /// </summary>
+    protected abstract void TurnStart();
+
+    /// <summary>
+    /// ターン終了時。
+    /// </summary>
+    protected abstract void TurnEnd();
 }

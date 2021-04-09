@@ -2161,7 +2161,6 @@ GameObject:
   - component: {fileID: 840032360}
   - component: {fileID: 840032362}
   - component: {fileID: 840032363}
-  - component: {fileID: 840032359}
   - component: {fileID: 840032364}
   - component: {fileID: 840032361}
   - component: {fileID: 840032366}
@@ -2173,18 +2172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &840032359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840032358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8f9e31e1edf4155ab8dc9739e9cac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &840032360
 Transform:
   m_ObjectHideFlags: 0
@@ -2214,7 +2201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e911d606d190442b1b274803e4f88722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 840032359}
   movement: {fileID: 840032366}
   faceDirection: {fileID: 840032365}
   interactor: {fileID: 840032364}
@@ -2279,7 +2265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db48aaa5596143dfb3a6e507a60cafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 840032359}
   animeController: {fileID: 1240212065}
   sightTransform: {fileID: 1741351770}
 --- !u!114 &840032366
@@ -2294,7 +2279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791cd8735dfbc4512ac66a91bfb60419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 840032359}
   moveMask:
     serializedVersion: 2
     m_Bits: 256
@@ -3255,7 +3239,6 @@ MonoBehaviour:
   sightMask:
     serializedVersion: 2
     m_Bits: 768
-  actor: {fileID: 1242083563}
   exclamationMark: {fileID: 1211167308}
   actorAnime: {fileID: 988291131}
 --- !u!114 &1242083566
@@ -3270,7 +3253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791cd8735dfbc4512ac66a91bfb60419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 1242083563}
   moveMask:
     serializedVersion: 2
     m_Bits: 256

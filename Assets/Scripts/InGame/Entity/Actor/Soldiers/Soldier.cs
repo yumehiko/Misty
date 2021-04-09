@@ -14,23 +14,27 @@ public class Soldier : Actor
 
     private void Awake()
     {
-        TurnManager turnManager = GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
-        turnManager.TurnEvent.Subscribe(_ => TurnAction());
+        SubscribeTurnManager();
     }
 
-    private void TurnAction()
+    /// <summary>
+    /// ターン開始時に実行。TurnManagerのイベントをフックにして呼び出される。
+    /// </summary>
+    protected override void TurnStart()
     {
-        ActStart();
-
         //プレイヤーを発見しているなら、毎ターン左へ歩く。
         if (detectPlayer.IsDiscovered)
         {
             movement.MoveToDirection(ActorDirection.Left, TurnManager.TurnBaseTime);
             return;
         }
+    }
 
-
-        //そうでないなら、単に無為に過ごす。
-        DOVirtual.DelayedCall(TurnManager.TurnBaseTime, () => ActEnd());
+    /// <summary>
+    /// ターン終了時に実行。TurnManagerのイベントをフックにして呼び出される。
+    /// </summary>
+    protected override void TurnEnd()
+    {
+        detectPlayer.DetectionPlayer();
     }
 }

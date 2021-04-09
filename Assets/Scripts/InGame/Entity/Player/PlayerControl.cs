@@ -8,12 +8,9 @@ using UniRx;
 /// </summary>
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private Player player = default;
     [SerializeField] private Movement movement = default;
     [SerializeField] private FaceDirection faceDirection = default;
     [SerializeField] private Interactor interactor = default;
-
-    private ActorDirection inputBuffer = ActorDirection.None;
 
     private TurnManager turnManager = default;
 
@@ -70,12 +67,12 @@ public class PlayerControl : MonoBehaviour
         }
 
         //プレイヤーが何らかの行動中なら、入力を先行入力として保持し、終了。
-        if (player.IsActing)
+        if (turnManager.IsActing)
         {
-            inputBuffer = direction;
-            player.OnActEnd
+            ActorDirection inputBuffer = direction;
+            turnManager.OnTurnEnd
                 .First()
-                .Subscribe(_ => SolveBufferInput());
+                .Subscribe(_ => SolveBufferInput(inputBuffer));
             return;
         }
 
@@ -89,7 +86,7 @@ public class PlayerControl : MonoBehaviour
         //入力方向に移動できるなら、移動。
         if(movement.CheckCanMove(Movement.DirectionToVector2(direction)))
         {
-            turnManager.AdvanceTurn();
+            turnManager.TurnStart(TurnManager.TurnBaseTime);
             movement.MoveToDirection(direction, TurnManager.TurnBaseTime);
             return;
         }
@@ -107,7 +104,18 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        turnManager.AdvanceTurn();
+        //プレイヤーが何らかの行動中なら、入力を先行入力として保持し、終了。
+        //TODO とりあえず入力無視してるだけ。キーコードを引数にする仕組みが欲しいな……。
+        if (turnManager.IsActing)
+        {
+            ActorDirection inputBuffer = ActorDirection.None;
+            turnManager.OnTurnEnd
+                .First()
+                .Subscribe(_ => SolveBufferInput(inputBuffer));
+            return;
+        }
+
+        turnManager.TurnStart(TurnManager.TurnBaseTime);
 
         //インタラクト対象が無い場合、無視。
         if (!interactor.HasTouchable())
@@ -122,14 +130,12 @@ public class PlayerControl : MonoBehaviour
     /// <summary>
     /// 先行入力を保持している場合、それを入力する。
     /// </summary>
-    private void SolveBufferInput()
+    private void SolveBufferInput(ActorDirection inputBuffer)
     {
         if(inputBuffer == ActorDirection.None)
         {
             return;
         }
-
         InputMoveControl(inputBuffer);
-        inputBuffer = ActorDirection.None;
     }
 }

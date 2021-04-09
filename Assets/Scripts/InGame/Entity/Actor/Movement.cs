@@ -9,7 +9,6 @@ using Spine.Unity;
 /// </summary>
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private Actor actor;
     [SerializeField] private LayerMask moveMask;
     [SerializeField] private ActorAnimeController animeController;
 
@@ -33,10 +32,8 @@ public class Movement : MonoBehaviour
         animeController.SkeletonFlip(direction);
         animeController.StepAnime();
 
-        actor.ActStart();
-        actor.ActTweener = transform.DOMove(angle * unit, duration)
-            .SetRelative()
-            .OnComplete(() => actor.ActEnd());
+        _ = transform.DOMove(angle * unit, duration)
+            .SetRelative();
     }
 
     /// <summary>
