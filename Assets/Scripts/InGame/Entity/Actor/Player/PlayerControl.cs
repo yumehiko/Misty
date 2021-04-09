@@ -9,9 +9,18 @@ using UniRx;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private Player player = default;
+    [SerializeField] private Movement movement = default;
+    [SerializeField] private FaceDirection faceDirection = default;
     [SerializeField] private Interactor interactor = default;
 
     private ActorDirection inputBuffer = ActorDirection.None;
+
+    private TurnManager turnManager = default;
+
+    private void Awake()
+    {
+        turnManager = GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
+    }
 
     private void Update()
     {
@@ -54,28 +63,38 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void InputMoveControl(ActorDirection direction)
     {
+        //入力がないなら無視。
         if(direction == ActorDirection.None)
         {
             return;
         }
 
-        if (player.TurnAct.IsActing)
+        //プレイヤーが何らかの行動中なら、入力を先行入力として保持し、終了。
+        if (player.IsActing)
         {
             inputBuffer = direction;
-            player.TurnAct.ActCompleteEvent
+            player.OnActEnd
                 .First()
                 .Subscribe(_ => SolveBufferInput());
             return;
         }
 
-        if (direction != player.FaceDirection.Direction)
+        //入力した方向とFaceDirectionが異なるなら、向きを変えて終了。
+        if (direction != faceDirection.Direction)
         {
-            player.FaceDirection.TurnToDirection(direction, 0.1f);
+            faceDirection.TurnToDirection(direction, 0.1f);
+            return;
         }
-        else
+
+        //入力方向に移動できるなら、移動。
+        if(movement.CheckCanMove(Movement.DirectionToVector2(direction)))
         {
-            player.Movement.MoveToDirection(direction, 0.2f);
+            turnManager.AdvanceTurn();
+            movement.MoveToDirection(direction, TurnManager.TurnBaseTime);
+            return;
         }
+
+        //入力はしたけど何もできなかった。
     }
 
     /// <summary>
@@ -87,6 +106,8 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
+
+        turnManager.AdvanceTurn();
 
         //インタラクト対象が無い場合、無視。
         if (!interactor.HasTouchable())

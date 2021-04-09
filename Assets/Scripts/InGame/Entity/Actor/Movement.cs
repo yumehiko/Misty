@@ -7,20 +7,12 @@ using Spine.Unity;
 /// <summary>
 /// 指定されたTransformを動かす。
 /// </summary>
-public class Movement
+public class Movement : MonoBehaviour
 {
-    private TurnAct turnAct;
-    private Transform transform;
-    private LayerMask moveMask;
-    private ActorAnimeController animeController;
+    [SerializeField] private Actor actor;
+    [SerializeField] private LayerMask moveMask;
+    [SerializeField] private ActorAnimeController animeController;
 
-    public Movement(TurnAct turnAct, Transform transform, LayerMask moveMask, ActorAnimeController animeController)
-    {
-        this.turnAct = turnAct;
-        this.transform = transform;
-        this.moveMask = moveMask;
-        this.animeController = animeController;
-    }
 
     /// <summary>
     /// 現在の位置から、指定方向に1単位進む。
@@ -31,7 +23,6 @@ public class Movement
         const float unit = 0.96f;
         Vector2 angle = DirectionToVector2(direction);
 
-        //TODO 埋めるべきではないかも。個別に呼び出すべきか。
         if(!CheckCanMove(angle))
         {
             //TODO ここで壁にぶつかるアニメーションとかを入れておく
@@ -42,9 +33,10 @@ public class Movement
         animeController.SkeletonFlip(direction);
         animeController.StepAnime();
 
-        turnAct.ActTweener = transform.DOMove(angle * unit, duration)
+        actor.ActStart();
+        actor.ActTweener = transform.DOMove(angle * unit, duration)
             .SetRelative()
-            .OnComplete(() => turnAct.OnActComplete());
+            .OnComplete(() => actor.ActEnd());
     }
 
     /// <summary>
@@ -52,7 +44,7 @@ public class Movement
     /// </summary>
     /// <param name="moveOffset">現在地から目標地までの方向と距離。</param>
     /// <returns>進めるならTrue</returns>
-    private bool CheckCanMove(Vector2 angle)
+    public bool CheckCanMove(Vector2 angle)
     {
         RaycastHit2D hit = Physics2D.Linecast(transform.position, (Vector2)transform.position + angle, moveMask);
         return hit.collider == null;
@@ -63,7 +55,7 @@ public class Movement
     /// </summary>
     /// <param name="direction"></param>
     /// <returns></returns>
-    private Vector2 DirectionToVector2(ActorDirection direction)
+    public static Vector2 DirectionToVector2(ActorDirection direction)
     {
         switch (direction)
         {

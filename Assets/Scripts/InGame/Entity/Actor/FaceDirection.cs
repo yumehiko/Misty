@@ -18,18 +18,11 @@ public enum ActorDirection
 /// <summary>
 /// 顔の向く方向。
 /// </summary>
-public class FaceDirection
+public class FaceDirection : MonoBehaviour
 {
-    private TurnAct turnAct = default;
-    private Transform transform = default;
-    private ActorAnimeController animeController = default;
-
-    public FaceDirection(TurnAct turnAct, Transform transform, ActorAnimeController animeController)
-    {
-        this.turnAct = turnAct;
-        this.transform = transform;
-        this.animeController = animeController;
-    }
+    [SerializeField] private Actor actor = default;
+    [SerializeField] private ActorAnimeController animeController = default;
+    [SerializeField] private Transform sightTransform = default;
 
     public ActorDirection Direction { get; private set; } = ActorDirection.Up;
 
@@ -45,8 +38,10 @@ public class FaceDirection
         }
 
         Vector3 degree = new Vector3(0.0f, 0.0f, DirectionToDegree(direction));
-        turnAct.ActTweener = transform.DORotate(degree, duration)
-            .OnComplete(() => turnAct.OnActComplete());
+
+        actor.ActStart();
+        actor.ActTweener = sightTransform.DORotate(degree, duration)
+            .OnComplete(() => actor.ActEnd());
 
         Direction = direction;
         animeController.SkeletonFlip(direction);
