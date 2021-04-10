@@ -9,7 +9,6 @@ using Pathfinding;
 public class PathCollider : MonoBehaviour
 {
     [SerializeField] private GameObject colliderObject = default;
-    private AstarPath astarPath = default;
 
     /// <summary>
     /// コライダーをアクティブ状態にして、パスファインダーグリッドを更新する。

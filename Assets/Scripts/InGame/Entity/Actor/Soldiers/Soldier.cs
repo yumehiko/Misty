@@ -13,6 +13,12 @@ public class Soldier : Actor
     [SerializeField] private Movement movement = default;
     [SerializeField] private DetectPlayer detectPlayer = default;
     [SerializeField] private Seeker seeker = default;
+    [SerializeField] private Capture capture = default;
+
+    /// <summary>
+    /// ターン行動ができるか。
+    /// </summary>
+    private bool canTurnAction = true;
 
     private void Awake()
     {
@@ -21,7 +27,12 @@ public class Soldier : Actor
 
     protected override void TurnStart()
     {
-        //Playerを発見しているなら、経路を計算。
+        if(!canTurnAction)
+        {
+            return;
+        }
+
+        //Playerを発見しているなら、経路を計算し、次の目標地点へステップ。
         if (detectPlayer.IsDiscovered)
         {
             seeker.StartPath(transform.position,
@@ -33,9 +44,16 @@ public class Soldier : Actor
 
     protected override void TurnEnd()
     {
+        if (!canTurnAction)
+        {
+            return;
+        }
+
         //プレイヤーと視界が繋がるかをチェック。
         detectPlayer.DetectionPlayer();
-        
+
+        //プレイヤーが重なっているなら、Capture
+        canTurnAction = !capture.CheckTargetTouch();
     }
 
     /// <summary>
