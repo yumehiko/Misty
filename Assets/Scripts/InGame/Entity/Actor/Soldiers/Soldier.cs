@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using DG.Tweening;
+using Pathfinding;
 
 /// <summary>
 /// 兵士。プレイヤーを捕獲しようと接近するActor。
@@ -11,30 +12,42 @@ public class Soldier : Actor
 {
     [SerializeField] private Movement movement = default;
     [SerializeField] private DetectPlayer detectPlayer = default;
+    [SerializeField] private Seeker seeker = default;
 
     private void Awake()
     {
         SubscribeTurnManager();
     }
 
-    /// <summary>
-    /// ターン開始時に実行。TurnManagerのイベントをフックにして呼び出される。
-    /// </summary>
     protected override void TurnStart()
     {
-        //プレイヤーを発見しているなら、毎ターン左へ歩く。
+        //Playerを発見しているなら、経路を計算。
         if (detectPlayer.IsDiscovered)
         {
-            movement.MoveToDirection(ActorDirection.Left, TurnManager.TurnBaseTime);
-            return;
+            seeker.StartPath(transform.position,
+                detectPlayer.PlayerTransform.position,
+                (path) => TryMoveTowardPoint(path));
         }
+
+    }
+
+    protected override void TurnEnd()
+    {
+        //プレイヤーと視界が繋がるかをチェック。
+        detectPlayer.DetectionPlayer();
+        
     }
 
     /// <summary>
-    /// ターン終了時に実行。TurnManagerのイベントをフックにして呼び出される。
+    /// 経路から、次のマスを探して、可能ならそこへステップ。
     /// </summary>
-    protected override void TurnEnd()
+    private void TryMoveTowardPoint(Path path)
     {
-        detectPlayer.DetectionPlayer();
+        if(path.path.Count < 2)
+        {
+            return;
+        }
+
+        movement.StepToPosition((Vector3)path.path[1].position, TurnManager.TurnBaseTime);
     }
 }

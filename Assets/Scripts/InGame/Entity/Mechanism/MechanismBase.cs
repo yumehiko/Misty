@@ -64,4 +64,16 @@ public abstract class MechanismBase : MonoBehaviour
     /// メカニズムを停止する。
     /// </summary>
     protected abstract void DeActiveMechanism();
+
+    /// <summary>
+    /// パスファインダーグラフを再スキャンする。
+    /// このメカニズムによってコライダーが変化しても、新たな状態のmapで正しく経路探索ができる。
+    /// </summary>
+    protected void ReScanPathFinder()
+    {
+        //経路探索グラフを再スキャン（0番目のみ）。
+        //もし、複数の経路グラフを使う場合、このコードは修正する必要がある。
+        var graphToScan = AstarPath.active.data.gridGraph;
+        AstarPath.active.Scan(graphToScan);
+    }
 }

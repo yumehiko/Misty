@@ -17,6 +17,8 @@ public class PillarMechanism : MechanismBase
     {
         animator.SetTrigger("DoOpen");
         colliderObject.SetActive(false);
+
+        ReScanPathFinder();
     }
 
     /// <summary>
@@ -26,5 +28,7 @@ public class PillarMechanism : MechanismBase
     {
         animator.SetTrigger("DoClose");
         colliderObject.SetActive(true);
+
+        ReScanPathFinder();
     }
 }

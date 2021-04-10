@@ -57,6 +57,8 @@ public class TurnManager : MonoBehaviour
     private void TurnEnd()
     {
         //ここでKillするのは、先行入力を通すため。
+        //懸念：ターン処理が何らかの理由で遅れて、終わってない場合でも、プレイヤーの動作が終わったらとにかく呼ばれてしまう。
+        //処理速度によっては都合が悪いかも。
         TurnTween.Kill();
         onTurnEnd.OnNext(Unit.Default);
     }

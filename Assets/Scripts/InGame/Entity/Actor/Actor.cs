@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+
+/// <summary>
+/// ターンの流れに応じてActionを実行するEntity。
+/// </summary>
 public abstract class Actor : MonoBehaviour
 {
     private void Awake()
@@ -21,12 +25,14 @@ public abstract class Actor : MonoBehaviour
     }
 
     /// <summary>
-    /// ターン開始時。
+    /// ターン開始時に実行するAction。
+    /// TurnManagerのイベントをフックにして呼び出される。
     /// </summary>
     protected abstract void TurnStart();
 
     /// <summary>
-    /// ターン終了時。
+    /// ターン終了時に実行するAction。
+    /// TurnManagerのイベントをフックにして呼び出される。
     /// </summary>
     protected abstract void TurnEnd();
 }

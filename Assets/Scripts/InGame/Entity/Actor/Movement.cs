@@ -5,16 +5,24 @@ using DG.Tweening;
 using Spine.Unity;
 
 /// <summary>
-/// 指定されたTransformを動かす。
+/// Transformをステップ単位で動かす。
 /// </summary>
 public class Movement : MonoBehaviour
 {
     [SerializeField] private LayerMask moveMask;
     [SerializeField] private ActorAnimeController animeController;
 
+    /// <summary>
+    /// 現在の位置から、目標の座標へ向かって、1ステップ進む。
+    /// </summary>
+    public void StepToPosition(Vector3 targetPosition, float duration)
+    {
+        ActorDirection direction = PositionToDirection(transform.position, targetPosition);
+        MoveToDirection(direction, duration);
+    }
 
     /// <summary>
-    /// 現在の位置から、指定方向に1単位進む。
+    /// 現在の位置から、指定方向へ向かって、1ステップ進む。
     /// </summary>
     /// <param name="point"></param>
     public void MoveToDirection(ActorDirection direction, float duration)
@@ -68,4 +76,43 @@ public class Movement : MonoBehaviour
                 return Vector2.zero;
         }
     }
+
+    /// <summary>
+    /// A, Bの座標をもとに、AからBに向かう正規化して丸めたVector2を返す。
+    /// 返り値は、Vector2.up/down/right/leftと同義。
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="targetPosition"></param>
+    /// <returns></returns>
+    public static ActorDirection PositionToDirection(Vector2 position, Vector2 targetPosition)
+    {
+        Vector2 heading = targetPosition - position;
+        float distance = heading.magnitude;
+        Vector2 direction = heading / distance;
+
+        int x = Mathf.RoundToInt(direction.x);
+        if(x == 1)
+        {
+            return ActorDirection.Right;
+        }
+
+        if(x == -1)
+        {
+            return ActorDirection.Left;
+        }
+
+        int y = Mathf.RoundToInt(direction.y);
+        if(y == 1)
+        {
+            return ActorDirection.Up;
+        }
+
+        if(y == -1)
+        {
+            return ActorDirection.Down;
+        }
+
+        return ActorDirection.None;
+    }
+
 }

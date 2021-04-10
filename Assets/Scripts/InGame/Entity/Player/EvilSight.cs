@@ -14,6 +14,7 @@ public class EvilSight : MonoBehaviour
 
     private void Update()
     {
+        //TODO 多分ターンごとに実行でOKなので、ターン終了時判定を得るためにActorクラスがいるかも。Player : Actorか？
         EvilSeeing();
     }
 

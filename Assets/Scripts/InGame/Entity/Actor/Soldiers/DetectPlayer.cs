@@ -15,7 +15,7 @@ public class DetectPlayer : MonoBehaviour
     /// </summary>
     public bool IsDiscovered { get; private set; } = false;
 
-    private Transform playerTransform = default;
+    public Transform PlayerTransform { get; private set; } = default;
 
     /// <summary>
     /// 視界を遮るレイヤー。
@@ -31,7 +31,7 @@ public class DetectPlayer : MonoBehaviour
 
     private void Awake()
     {
-        playerTransform = GameObject.FindWithTag("Player").transform;
+        PlayerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     /// <summary>
@@ -44,14 +44,14 @@ public class DetectPlayer : MonoBehaviour
             return;
         }
 
-        IsDiscovered = AppearCheck(transform.position, playerTransform.position);
+        IsDiscovered = AppearCheck(transform.position, PlayerTransform.position);
 
         //見つけたとき。
         if (IsDiscovered)
         {
             exclamationMark.color = Color.white;
             exclamationMark.DOFade(0.0f, 0.5f);
-            actorAnime.SkeletonFlip(XDiffToDirection(transform.position, playerTransform.position));
+            actorAnime.SkeletonFlip(XDiffToDirection(transform.position, PlayerTransform.position));
         }
     }
 
