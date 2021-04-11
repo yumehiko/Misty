@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour
         animeController.StepAnime();
 
         _ = transform.DOMove(angle * unit, duration)
+            .SetEase(Ease.InOutQuart)
             .SetRelative();
     }
 

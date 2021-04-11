@@ -16,7 +16,7 @@ public abstract class MechanismBase : MonoBehaviour
     /// </summary>
     protected bool isOn = false;
 
-    private void Awake()
+    private void Start()
     {
         RegisterSwitches();
     }

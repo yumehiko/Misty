@@ -1,6 +1,6 @@
 
 Misty.png
-size: 157,423
+size: 157,615
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -24,6 +24,13 @@ Body
   size: 51, 63
   orig: 53, 65
   offset: 1, 1
+  index: -1
+CaptureBag
+  rotate: false
+  xy: 2, 423
+  size: 153, 190
+  orig: 192, 288
+  offset: 17, 33
   index: -1
 EyeClose
   rotate: false

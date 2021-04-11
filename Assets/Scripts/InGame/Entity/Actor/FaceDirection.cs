@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 using DG.Tweening;
 
 /// <summary>
@@ -25,6 +26,12 @@ public class FaceDirection : MonoBehaviour
 
     public ActorDirection Direction { get; private set; } = ActorDirection.Up;
 
+    private Subject<Unit> onFaceTurnComplete = new Subject<Unit>();
+    /// <summary>
+    /// 顔を向く動作を終えた時点。
+    /// </summary>
+    public System.IObservable<Unit> OnFaceTurnComplete => onFaceTurnComplete;
+
     /// <summary>
     /// 入力された方向へ向く。
     /// </summary>
@@ -38,7 +45,8 @@ public class FaceDirection : MonoBehaviour
 
         Vector3 degree = new Vector3(0.0f, 0.0f, DirectionToDegree(direction));
 
-        _ = sightTransform.DORotate(degree, duration);
+        _ = sightTransform.DORotate(degree, duration)
+            .OnComplete(() => onFaceTurnComplete.OnNext(Unit.Default));
 
         Direction = direction;
         animeController.SkeletonFlip(direction);

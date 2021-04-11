@@ -8,21 +8,21 @@ using Pathfinding;
 /// <summary>
 /// 兵士。プレイヤーを捕獲しようと接近するActor。
 /// </summary>
-public class Soldier : Actor
+public class Soldier : TurnActor
 {
+    [SerializeField] private Animator animator = default;
     [SerializeField] private Movement movement = default;
     [SerializeField] private DetectPlayer detectPlayer = default;
     [SerializeField] private Seeker seeker = default;
     [SerializeField] private Capture capture = default;
-
-    /// <summary>
-    /// ターン行動ができるか。
-    /// </summary>
-    private bool canTurnAction = true;
+    [SerializeField] private Petrify petrify = default;
 
     private void Awake()
     {
         SubscribeTurnManager();
+        petrify.IsPetrified
+            .Where(isPetrified => isPetrified)
+            .Subscribe(_ => OnPetrified());
     }
 
     protected override void TurnStart()
@@ -67,5 +67,14 @@ public class Soldier : Actor
         }
 
         movement.StepToPosition((Vector3)path.path[1].position, TurnManager.TurnBaseTime);
+    }
+
+    /// <summary>
+    /// 石化時。
+    /// </summary>
+    private void OnPetrified()
+    {
+        canTurnAction = false;
+        animator.Play("Petrify");
     }
 }

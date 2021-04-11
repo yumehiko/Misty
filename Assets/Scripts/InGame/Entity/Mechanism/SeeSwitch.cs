@@ -5,12 +5,14 @@ using UniRx;
 
 public class SeeSwitch : SwitchBase
 {
-    [SerializeField] private SpriteRenderer spriteRenderer = default;
+    [SerializeField] private Animator animator = default;
     [SerializeField] private SeeTarget seeTarget = default;
 
     private void Awake()
     {
-        seeTarget.SeeEvent.Subscribe(isSeeing => OnSeeing(isSeeing));
+        seeTarget.IsSeeing
+            .Skip(1)
+            .Subscribe(isSeeing => OnSeeing(isSeeing));
     }
 
     /// <summary>
@@ -21,12 +23,12 @@ public class SeeSwitch : SwitchBase
     {
         if (isSeeing)
         {
-            spriteRenderer.color = Color.red;
+            animator.Play("On");
             switchEvent.OnNext(true);
         }
         else
         {
-            spriteRenderer.color = Color.white;
+            animator.Play("Off");
             switchEvent.OnNext(false);
         }
     }

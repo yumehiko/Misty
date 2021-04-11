@@ -8,27 +8,19 @@ using UniRx;
 /// </summary>
 public class SeeTarget : MonoBehaviour
 {
-    protected Subject<bool> seeEvent = new Subject<bool>();
+    private EvilSightManager evilSightManager;
 
+    private BoolReactiveProperty isSeeing = new BoolReactiveProperty();
     /// <summary>
     /// スイッチがOnかOffに切り替わったとき、OnNextを発行。
     /// </summary>
-    public System.IObservable<bool> SeeEvent => seeEvent;
+    public IReadOnlyReactiveProperty<bool> IsSeeing => isSeeing;
 
-    public bool IsSeeing = false;
-    private bool prevSeeing = false;
+    public bool SetSeeing = false;
 
     private void Awake()
     {
         RegisterEvilSights();
-    }
-
-    private void LateUpdate()
-    {
-        //TODO 多分Turn単位の処理に変えられる。
-        //プレイヤーが移動を終えた時点で視界の状態を確認するとか……。
-        //そしたらLateUpdateは使わなくてすむかも。
-        CheckSeeingChange();
     }
 
     /// <summary>
@@ -36,13 +28,12 @@ public class SeeTarget : MonoBehaviour
     /// </summary>
     private void CheckSeeingChange()
     {
-        if (IsSeeing != prevSeeing)
+        if (SetSeeing != isSeeing.Value)
         {
-            seeEvent.OnNext(IsSeeing);
-            prevSeeing = IsSeeing;
+            isSeeing.Value = SetSeeing;
         }
 
-        IsSeeing = false;
+        SetSeeing = false;
     }
 
     /// <summary>
@@ -50,16 +41,10 @@ public class SeeTarget : MonoBehaviour
     /// </summary>
     private void RegisterEvilSights()
     {
-        GameObject[] evilSightObjects = GameObject.FindGameObjectsWithTag("EvilSight");
-        foreach (GameObject evilSightObject in evilSightObjects)
-        {
-            EvilSight evilSight = evilSightObject.GetComponent<EvilSight>();
-            if(evilSight == null)
-            {
-                continue;
-            }
-
-            evilSight.AddSeeTarget(this);
-        }
+        evilSightManager = GameObject.FindWithTag("LevelManager").GetComponent<EvilSightManager>();
+        evilSightManager.AddSeeTarget(this);
+        evilSightManager.OnRefleshSeeTarget
+            //.DelayFrame(1)
+            .Subscribe(_ => CheckSeeingChange());
     }
 }

@@ -11,16 +11,31 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Movement movement = default;
     [SerializeField] private FaceDirection faceDirection = default;
     [SerializeField] private Interactor interactor = default;
+    [SerializeField] private Capturable capturable = default;
+
+    private bool canControl = true;
 
     private TurnManager turnManager = default;
 
     private void Awake()
     {
         turnManager = GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
+
+        //FaceTurn完了時のEvilSight更新イベントを登録。
+        EvilSightManager evilSightManager = turnManager.GetComponent<EvilSightManager>();
+        faceDirection.OnFaceTurnComplete.Subscribe(_ => evilSightManager.RefleshEvilSight());
+
+        //捕獲時、行動不能に。
+        capturable.OnCaptured.Subscribe(_ => canControl = false);
     }
 
     private void Update()
     {
+        if(!canControl)
+        {
+            return;
+        }
+
         ActorDirection inputDirection = CheckInputDirection();
         InputMoveControl(inputDirection);
         InputInteract();

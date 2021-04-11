@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UniRx;
 
 /// <summary>
 /// 邪眼。視界に入ったものに魔力で干渉する。
@@ -10,21 +11,13 @@ public class EvilSight : MonoBehaviour
 {
     [SerializeField] private Light2D fovLight = default;
     [SerializeField] private LayerMask sightMask = default;
-    private List<SeeTarget> seeTargets = new List<SeeTarget>();
+    private List<SeeTarget> seeTargets;
 
-    private void Update()
+    private void Awake()
     {
-        //TODO 多分ターンごとに実行でOKなので、ターン終了時判定を得るためにActorクラスがいるかも。Player : Actorか？
-        EvilSeeing();
-    }
-
-    /// <summary>
-    /// 邪眼の対象を追加する。
-    /// </summary>
-    /// <param name="seeTarget"></param>
-    public void AddSeeTarget(SeeTarget seeTarget)
-    {
-        seeTargets.Add(seeTarget);
+        EvilSightManager evilSightManager = GameObject.FindWithTag("LevelManager").GetComponent<EvilSightManager>();
+        seeTargets = evilSightManager.SeeTargets;
+        evilSightManager.OnRefleshEvilSight.Subscribe(_ => EvilSeeing());
     }
 
     /// <summary>
@@ -46,7 +39,7 @@ public class EvilSight : MonoBehaviour
             if(AppearCheck(fovHalf, forward, playerPosition, seeTarget.transform.position))
             {
                 //必要なときtrueにするだけ。falseに戻すかどうかはseeTarget側で制御する。
-                seeTarget.IsSeeing = true;
+                seeTarget.SetSeeing = true;
             }
         }
     }

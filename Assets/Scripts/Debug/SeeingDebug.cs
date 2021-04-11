@@ -10,7 +10,7 @@ public class SeeingDebug : MonoBehaviour
 
     private void Awake()
     {
-        seeTarget.SeeEvent.Subscribe(isSeeing => OnSeeing(isSeeing));
+        seeTarget.IsSeeing.Subscribe(isSeeing => OnSeeing(isSeeing));
     }
 
     private void OnSeeing(bool isSeeing)

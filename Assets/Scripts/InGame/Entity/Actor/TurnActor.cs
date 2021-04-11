@@ -5,10 +5,15 @@ using UniRx;
 
 
 /// <summary>
-/// ターンの流れに応じてActionを実行するEntity。
+/// ターンの経過に応じてActionを実行するEntity。
 /// </summary>
-public abstract class Actor : MonoBehaviour
+public abstract class TurnActor : MonoBehaviour
 {
+    /// <summary>
+    /// ターン行動ができるか。
+    /// </summary>
+    protected bool canTurnAction = true;
+
     private void Awake()
     {
         SubscribeTurnManager();

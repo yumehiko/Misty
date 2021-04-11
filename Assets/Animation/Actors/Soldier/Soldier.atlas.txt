@@ -1,89 +1,96 @@
 
 Soldier.png
-size: 232,142
+size: 316,198
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 ArmLeft
-  rotate: true
-  xy: 171, 2
+  rotate: false
+  xy: 296, 166
   size: 13, 30
   orig: 15, 32
   offset: 1, 1
   index: -1
 ArmRight
   rotate: false
-  xy: 204, 53
+  xy: 296, 134
   size: 13, 30
   orig: 15, 32
   offset: 1, 1
   index: -1
 EyeClose
   rotate: true
-  xy: 164, 52
+  xy: 283, 108
   size: 88, 11
   orig: 90, 13
   offset: 1, 1
   index: -1
 EyeOpen
-  rotate: true
-  xy: 128, 48
+  rotate: false
+  xy: 143, 36
   size: 92, 34
   orig: 94, 36
   offset: 1, 1
   index: -1
 Head
-  rotate: true
-  xy: 2, 2
+  rotate: false
+  xy: 143, 72
   size: 138, 124
   orig: 140, 126
   offset: 1, 1
   index: -1
 LegLeft
-  rotate: false
-  xy: 177, 52
+  rotate: true
+  xy: 283, 81
   size: 25, 31
   orig: 27, 33
   offset: 1, 1
   index: -1
 LegRight
-  rotate: false
-  xy: 171, 17
+  rotate: true
+  xy: 200, 11
   size: 23, 33
   orig: 25, 35
   offset: 1, 1
   index: -1
 LowerBody
-  rotate: true
-  xy: 177, 85
+  rotate: false
+  xy: 143, 4
   size: 55, 30
   orig: 57, 32
   offset: 1, 1
   index: -1
 Neck
   rotate: false
-  xy: 209, 88
+  xy: 267, 2
   size: 19, 25
   orig: 21, 27
   offset: 1, 1
   index: -1
-ShoulderLeft
+Petrify
   rotate: false
-  xy: 209, 115
+  xy: 2, 5
+  size: 139, 191
+  orig: 192, 288
+  offset: 26, 33
+  index: -1
+ShoulderLeft
+  rotate: true
+  xy: 283, 58
   size: 21, 25
   orig: 23, 27
   offset: 1, 1
   index: -1
 ShoulderRight
-  rotate: false
-  xy: 196, 20
+  rotate: true
+  xy: 235, 3
   size: 24, 30
   orig: 26, 32
   offset: 1, 1
   index: -1
 UpperBody
   rotate: false
-  xy: 128, 5
+  xy: 237, 29
   size: 41, 41
   orig: 43, 43
   offset: 1, 1
