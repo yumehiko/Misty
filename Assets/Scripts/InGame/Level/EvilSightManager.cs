@@ -26,7 +26,7 @@ public class EvilSightManager : MonoBehaviour
 
     private void Awake()
     {
-        turnManager.OnTurnEndSightEvent.Subscribe(_ => RefleshEvilSight());
+        turnManager.OnEvilSightReflesh.Subscribe(_ => RefleshEvilSight());
     }
 
     /// <summary>

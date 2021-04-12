@@ -10,6 +10,8 @@ using DG.Tweening;
 /// </summary>
 public class DetectPlayer : MonoBehaviour
 {
+    [SerializeField] private Actor actor = default;
+
     /// <summary>
     /// プレイヤーの発見状態。
     /// </summary>
@@ -32,13 +34,20 @@ public class DetectPlayer : MonoBehaviour
     private void Awake()
     {
         PlayerTransform = GameObject.FindWithTag("Player").transform;
+        _ = TurnManager.GetTurnManager()
+            .OnDetectPlayer.Subscribe(_ => DetectionPlayer());
     }
 
     /// <summary>
     /// プレイヤーを発見できるか確認する。
     /// </summary>
-    public void DetectionPlayer()
+    private void DetectionPlayer()
     {
+        if(!actor.CanAction)
+        {
+            return;
+        }
+
         if(IsDiscovered)
         {
             return;

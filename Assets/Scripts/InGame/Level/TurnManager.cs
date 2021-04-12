@@ -14,6 +14,8 @@ public class TurnManager : MonoBehaviour
      * 
      * ・TODO / ここに経路探索イベントをいれた方がよいかも。
      * 
+     * 
+     * 
      * ・onTurnStart：ターンスタート時処理。
      * 　・プレイヤーの入力待機。
      * 　・兵士の経路チェック、および移動先の決定。
@@ -31,6 +33,15 @@ public class TurnManager : MonoBehaviour
      * 　・兵士がプレイヤーを発見できるかチェック。
      * 　
      * 　TODO / メモる必要もないくらい自明な名前で必要なだけ処理タイミングイベントを増やした方がよいかも。
+     * 
+     * 新しいターンイベント一覧：
+     * ・onPathFind：経路探索計算。
+     * ・onWaitInput：プレイヤーの入力待機。
+     * （0.2秒のアニメーション待機）
+     * ・onEvilSightReflesh
+     * ・onCapture
+     * ・onPetrify
+     * ・onDetectPlayer
      */
 
     /// <summary>
@@ -43,23 +54,51 @@ public class TurnManager : MonoBehaviour
     /// </summary>
     public static readonly float TurnBaseTime = 0.2f;
 
-    private Subject<Unit> onTurnStart = new Subject<Unit>();
-    /// <summary>
-    /// ターン開始時。
-    /// </summary>
-    public System.IObservable<Unit> OnTurnStart => onTurnStart;
+    private Subject<Unit> onDetectPlayer = new Subject<Unit>();
+    private Subject<Unit> onPathFind = new Subject<Unit>();
+    private Subject<Unit> onActInput = new Subject<Unit>();
+    private Subject<Unit> onEvilSightReflesh = new Subject<Unit>();
+    private Subject<Unit> onCapture = new Subject<Unit>();
+    private Subject<Unit> onPetrify = new Subject<Unit>();
+    private Subject<Unit> onSolveInputBuffer = new Subject<Unit>();
 
-    private Subject<Unit> onTurnEndSightEvent = new Subject<Unit>();
-    /// <summary>
-    /// ターン終了直前、視界処理などのタイミング。
-    /// </summary>
-    public System.IObservable<Unit> OnTurnEndSightEvent => onTurnEndSightEvent;
 
-    private Subject<Unit> onTurnEnd = new Subject<Unit>();
+
     /// <summary>
-    /// ターン終了時。
+    /// 兵士などがプレイヤーを探すタイミング。
     /// </summary>
-    public System.IObservable<Unit> OnTurnEnd => onTurnEnd;
+    public System.IObservable<Unit> OnDetectPlayer => onDetectPlayer;
+
+    /// <summary>
+    /// 経路探索タイミング。
+    /// </summary>
+    public System.IObservable<Unit> OnPathFind => onPathFind;
+
+    /// <summary>
+    /// プレイヤーの入力実行タイミング。
+    /// </summary>
+    public System.IObservable<Unit> OnActInput => onActInput;
+
+    /// <summary>
+    /// 邪眼の影響更新タイミング。
+    /// </summary>
+    public System.IObservable<Unit> OnEvilSightReflesh => onEvilSightReflesh;
+
+    /// <summary>
+    /// 捕獲確認タイミング。
+    /// </summary>
+    public System.IObservable<Unit> OnCapture => onCapture;
+
+    /// <summary>
+    /// 石化確認タイミング。
+    /// </summary>
+    public System.IObservable<Unit> OnPetrify => onPetrify;
+
+    /// <summary>
+    /// 先行入力実行タイミング。
+    /// </summary>
+    public System.IObservable<Unit> OnSolveInputBuffer => onSolveInputBuffer;
+
 
 
     /// <summary>
@@ -70,7 +109,9 @@ public class TurnManager : MonoBehaviour
     /// <summary>
     /// ターン動作が実行中か。
     /// </summary>
-    public bool IsActing => TurnTween.IsActive();
+    public bool IsActing { get; private set; } = false;
+
+
 
     /// <summary>
     /// ターンを進める。
@@ -78,8 +119,11 @@ public class TurnManager : MonoBehaviour
     public void TurnStart(float duration)
     {
         turnCount++;
-        onTurnStart.OnNext(Unit.Default);
-        TurnTween = DOVirtual.DelayedCall(duration + 0.05f, () => TurnEnd());
+        onDetectPlayer.OnNext(Unit.Default);
+        onPathFind.OnNext(Unit.Default);
+        onActInput.OnNext(Unit.Default);
+        IsActing = true;
+        TurnTween = DOVirtual.DelayedCall(duration, () => TurnEnd());
     }
 
     /// <summary>
@@ -87,13 +131,19 @@ public class TurnManager : MonoBehaviour
     /// </summary>
     private void TurnEnd()
     {
-        onTurnEndSightEvent.OnNext(Unit.Default);
+        onEvilSightReflesh.OnNext(Unit.Default);
+        onCapture.OnNext(Unit.Default);
+        onPetrify.OnNext(Unit.Default);
+        IsActing = false;
+        onSolveInputBuffer.OnNext(Unit.Default);
+    }
 
-        //ここでKillするのは、先行入力を通すため。
-        //でも、killせずにプレイヤーの先行入力処理タイミング用のイベントをどっかに移した方がよさそう。
-        //懸念：ターン処理が何らかの理由で遅れて、終わってない場合でも、プレイヤーの動作が終わったらとにかく呼ばれてしまう。
-        //処理速度によっては都合が悪いかも。
-        TurnTween.Kill();
-        onTurnEnd.OnNext(Unit.Default);
+    /// <summary>
+    /// シーン上のターンマネージャーを取得。
+    /// </summary>
+    /// <returns></returns>
+    public static TurnManager GetTurnManager()
+    {
+        return GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
     }
 }

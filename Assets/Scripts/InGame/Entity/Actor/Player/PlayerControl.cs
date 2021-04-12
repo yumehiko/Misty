@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
-        turnManager = GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
+        turnManager = TurnManager.GetTurnManager();
 
         //FaceTurn完了時のEvilSight更新イベントを登録。
         EvilSightManager evilSightManager = turnManager.GetComponent<EvilSightManager>();
@@ -85,7 +85,7 @@ public class PlayerControl : MonoBehaviour
         if (turnManager.IsActing)
         {
             ActorDirection inputBuffer = direction;
-            turnManager.OnTurnEnd
+            turnManager.OnSolveInputBuffer
                 .First()
                 .Subscribe(_ => SolveBufferInput(inputBuffer));
             return;
@@ -124,7 +124,7 @@ public class PlayerControl : MonoBehaviour
         if (turnManager.IsActing)
         {
             ActorDirection inputBuffer = ActorDirection.None;
-            turnManager.OnTurnEnd
+            _ = turnManager.OnSolveInputBuffer
                 .First()
                 .Subscribe(_ => SolveBufferInput(inputBuffer));
             return;

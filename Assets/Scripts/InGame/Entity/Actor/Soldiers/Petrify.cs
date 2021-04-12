@@ -10,7 +10,13 @@ using DG.Tweening;
 /// </summary>
 public class Petrify : MonoBehaviour
 {
+    [SerializeField] private Actor actor = default;
     [SerializeField] private SeeTarget seeTarget = default;
+
+    /// <summary>
+    /// 石化アニメーションを実行するAnimator。
+    /// </summary>
+    [SerializeField] private Animator animator = default;
 
     /// <summary>
     /// 石化進行状況を示すheadUIのAnimator。
@@ -33,28 +39,24 @@ public class Petrify : MonoBehaviour
     /// </summary>
     private int progressValue = 0;
 
-    private BoolReactiveProperty isPetrified = new BoolReactiveProperty(false);
-    /// <summary>
-    /// 石化したか。
-    /// </summary>
-    public IReadOnlyReactiveProperty<bool> IsPetrified => isPetrified;
+    private bool isPetrified = false;
 
     private TurnManager turnManager = default;
 
     private void Awake()
     {
         turnManager = GameObject.FindWithTag("LevelManager").GetComponent<TurnManager>();
-        turnManager.OnTurnEnd.Subscribe(_ => CheckEvilSightStats());
+        turnManager.OnPetrify.Subscribe(_ => CheckPetrifyProgress());
         aKeyIsPop = Animator.StringToHash("IsPop");
     }
 
     /// <summary>
     /// ターン開始時に邪眼に曝されているなら、石化進行状態を1進める。
     /// </summary>
-    private void CheckEvilSightStats()
+    private void CheckPetrifyProgress()
     {
         //すでに石化している。
-        if(isPetrified.Value)
+        if(isPetrified)
         {
             return;
         }
@@ -107,15 +109,14 @@ public class Petrify : MonoBehaviour
         petrifyUIFill.DOFillAmount(amount, 0.1f);
     }
 
-
-    
-
     /// <summary>
     /// 石化する。
     /// </summary>
     private void BePetrified()
     {
-        isPetrified.Value = true;
+        isPetrified = true;
+        actor.CanAction = false;
         petrifyUIAnimator.SetBool(aKeyIsPop, false);
+        animator.Play("Petrify");
     }
 }

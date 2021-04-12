@@ -8,52 +8,24 @@ using Pathfinding;
 /// <summary>
 /// 兵士。プレイヤーを捕獲しようと接近するActor。
 /// </summary>
-public class Soldier : TurnActor
+public class Soldier : Actor
 {
-    [SerializeField] private Animator animator = default;
     [SerializeField] private Movement movement = default;
     [SerializeField] private DetectPlayer detectPlayer = default;
     [SerializeField] private Seeker seeker = default;
-    [SerializeField] private Capture capture = default;
-    [SerializeField] private Petrify petrify = default;
 
     private void Awake()
     {
-        SubscribeTurnManager();
-        petrify.IsPetrified
-            .Where(isPetrified => isPetrified)
-            .Subscribe(_ => OnPetrified());
-    }
+        TurnManager turnManager = TurnManager.GetTurnManager();
 
-    protected override void TurnStart()
-    {
-        if(!canTurnAction)
-        {
-            return;
-        }
-
-        //Playerを発見しているなら、経路を計算し、次の目標地点へステップ。
-        if (detectPlayer.IsDiscovered)
-        {
-            seeker.StartPath(transform.position,
+        //経路探索タイミングを購読。
+        turnManager.OnPathFind
+            .Where(_ => CanAction)
+            .Where(_ => detectPlayer.IsDiscovered)
+            .Subscribe(_ => seeker.StartPath(
+                transform.position,
                 detectPlayer.PlayerTransform.position,
-                (path) => TryMoveTowardPoint(path));
-        }
-
-    }
-
-    protected override void TurnEnd()
-    {
-        if (!canTurnAction)
-        {
-            return;
-        }
-
-        //プレイヤーと視界が繋がるかをチェック。
-        detectPlayer.DetectionPlayer();
-
-        //プレイヤーが重なっているなら、Capture
-        canTurnAction = !capture.CheckTargetTouch();
+                (path) => TryMoveTowardPoint(path)));
     }
 
     /// <summary>
@@ -61,20 +33,17 @@ public class Soldier : TurnActor
     /// </summary>
     private void TryMoveTowardPoint(Path path)
     {
+        if(path == null)
+        {
+            Debug.Log("PathNull");
+            return;
+        }
+
         if(path.path.Count < 2)
         {
             return;
         }
 
         movement.StepToPosition((Vector3)path.path[1].position, TurnManager.TurnBaseTime);
-    }
-
-    /// <summary>
-    /// 石化時。
-    /// </summary>
-    private void OnPetrified()
-    {
-        canTurnAction = false;
-        animator.Play("Petrify");
     }
 }

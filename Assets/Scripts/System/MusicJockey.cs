@@ -31,7 +31,10 @@ public class MusicJockey : MonoBehaviour
 
     private void Awake()
     {
-        MusicJockeyInstance = this;
+        if (MusicJockeyInstance == null)
+        {
+            MusicJockeyInstance = this;
+        }
     }
 
     /// <summary>

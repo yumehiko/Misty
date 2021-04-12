@@ -27,8 +27,11 @@ public class PillarMechanism : MechanismBase
         colliderObject.SetActive(false);
 
         ReScanPathFinder();
+        //evilSightManager.RefleshEvilSight();
+        
         Observable.NextFrame()
             .Subscribe(_ => evilSightManager.RefleshEvilSight());
+        
     }
 
     /// <summary>
@@ -40,8 +43,11 @@ public class PillarMechanism : MechanismBase
         colliderObject.SetActive(true);
 
         ReScanPathFinder();
+        //evilSightManager.RefleshEvilSight();
+        
         Observable.NextFrame()
             .Subscribe(_ => evilSightManager.RefleshEvilSight());
         
+
     }
 }

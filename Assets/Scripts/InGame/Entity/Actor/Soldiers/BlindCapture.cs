@@ -7,14 +7,14 @@ using UnityEngine;
 /// </summary>
 public class BlindCapture : Capture
 {
-    public override bool CheckTargetTouch()
+    protected override void CheckTargetTouch()
     {
         Collider2D[] colliders = Physics2D.OverlapPointAll(transform.position);
 
         //触れた対象が1 == 自分だけなら、False。
         if (colliders.Length == 1)
         {
-            return false;
+            return;
         }
 
         foreach (Collider2D collider in colliders)
@@ -26,12 +26,9 @@ public class BlindCapture : Capture
             }
 
             //触れたものが自分自身でないなら、なんであれ、捕獲。
-            if (TryCaptureTarget(collider.gameObject))
-            {
-                return true;
-            }
+            TryCaptureTarget(collider.gameObject);
         }
 
-        return false;
+        return;
     }
 }

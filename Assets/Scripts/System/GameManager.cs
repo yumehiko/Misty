@@ -9,8 +9,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        GameManagerInstance = this;
-        DontDestroyOnLoad(gameObject);
+        if (GameManagerInstance == null)
+        {
+            GameManagerInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public bool IsSceneSwapping { get; private set; } = false;
