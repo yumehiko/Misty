@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Interactor : MonoBehaviour
 {
+    [SerializeField] private Inventory inventory = default;
+
     /// <summary>
     /// インタラクト対象。
     /// </summary>
@@ -30,24 +32,22 @@ public class Interactor : MonoBehaviour
     }
 
     /// <summary>
-    /// インタラクト可能な対象があるか（触れているか）。
-    /// </summary>
-    /// <returns></returns>
-    public bool HasTouchable()
-    {
-        return target != null;
-    }
-
-    /// <summary>
     /// 可能なら、インタラクトを実行する。
     /// </summary>
     public void TryInteract()
     {
-        if(target == null)
+        if(target != null)
         {
+            target.DoInteract(this);
             return;
         }
 
-        target.DoInteract();
+        if(inventory.HasItem)
+        {
+            inventory.PlaceItem();
+            return;
+        }
+
+        //なにもインタラクトできなかったとき。音でもならす？
     }
 }

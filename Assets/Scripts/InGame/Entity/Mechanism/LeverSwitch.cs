@@ -7,7 +7,6 @@ public class LeverSwitch : SwitchBase
 {
     [SerializeField] private Touchable touchable = default;
     [SerializeField] private Animator animator = default;
-    private int aKeyCanInteract = default;
     private int aKeyIsOn = default;
 
     /// <summary>
@@ -17,10 +16,8 @@ public class LeverSwitch : SwitchBase
 
     private void Awake()
     {
-        aKeyCanInteract = Animator.StringToHash("CanInteract");
         aKeyIsOn = Animator.StringToHash("IsOn");
 
-        touchable.IsTouch.Subscribe(isTouch => ChangeTouchStats(isTouch));
         touchable.InteractEvent.Subscribe(_ => SwitchLever(!isOn));
 
         //初期状態でOnなら、イベントを発行。
@@ -28,14 +25,6 @@ public class LeverSwitch : SwitchBase
         {
             DoSwitchEvent();
         }
-    }
-
-    /// <summary>
-    /// 接触状態を変更。
-    /// </summary>
-    private void ChangeTouchStats(bool isTouch)
-    {
-        animator.SetBool(aKeyCanInteract, isTouch);
     }
 
     /// <summary>

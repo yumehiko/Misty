@@ -13,6 +13,11 @@ public class EvilSight : MonoBehaviour
     [SerializeField] private LayerMask sightMask = default;
     private List<SeeTarget> seeTargets;
 
+    /// <summary>
+    /// この邪眼が有効か。
+    /// </summary>
+    private bool isActive = true;
+
     private void Awake()
     {
         EvilSightManager evilSightManager = GameObject.FindWithTag("LevelManager").GetComponent<EvilSightManager>();
@@ -25,6 +30,11 @@ public class EvilSight : MonoBehaviour
     /// </summary>
     private void EvilSeeing()
     {
+        if(!isActive)
+        {
+            return;
+        }
+
         if(seeTargets.Count == 0)
         {
             return;
@@ -66,5 +76,15 @@ public class EvilSight : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void OnEnable()
+    {
+        isActive = true;
+    }
+
+    private void OnDisable()
+    {
+        isActive = false;
     }
 }

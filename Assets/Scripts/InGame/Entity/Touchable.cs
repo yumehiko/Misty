@@ -8,17 +8,25 @@ using UniRx;
 /// </summary>
 public class Touchable : MonoBehaviour
 {
+    [SerializeField] private Animator animator = default;
+    private int aKeyCanInteract;
+
     private BoolReactiveProperty isTouch = new BoolReactiveProperty(false);
     /// <summary>
     /// 触れたときTrue、離れたときFalse。
     /// </summary>
     public IReadOnlyReactiveProperty<bool> IsTouch => isTouch;
 
-    private Subject<Unit> interactEvent = new Subject<Unit>();
+    private Subject<Interactor> interactEvent = new Subject<Interactor>();
     /// <summary>
     /// インタラクトしたとき。
     /// </summary>
-    public System.IObservable<Unit> InteractEvent => interactEvent;
+    public System.IObservable<Interactor> InteractEvent => interactEvent;
+
+    private void Awake()
+    {
+        aKeyCanInteract = Animator.StringToHash("CanInteract");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +34,7 @@ public class Touchable : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<Interactor>().SetTarget(this);
+            animator.SetBool(aKeyCanInteract, true);
             isTouch.Value = true;
         }
     }
@@ -36,6 +45,7 @@ public class Touchable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<Interactor>().RemoveTarget();
+            animator.SetBool(aKeyCanInteract, false);
             isTouch.Value = false;
         }
     }
@@ -43,8 +53,8 @@ public class Touchable : MonoBehaviour
     /// <summary>
     /// インタラクトを実行する。
     /// </summary>
-    public void DoInteract()
+    public void DoInteract(Interactor interactor)
     {
-        interactEvent.OnNext(Unit.Default);
+        interactEvent.OnNext(interactor);
     }
 }

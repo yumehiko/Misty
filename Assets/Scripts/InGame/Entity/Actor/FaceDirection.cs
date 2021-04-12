@@ -21,7 +21,6 @@ public enum ActorDirection
 /// </summary>
 public class FaceDirection : MonoBehaviour
 {
-    [SerializeField] private ActorAnimeController animeController = default;
     [SerializeField] private Transform sightTransform = default;
 
     public ActorDirection Direction { get; private set; } = ActorDirection.Up;
@@ -49,7 +48,6 @@ public class FaceDirection : MonoBehaviour
             .OnComplete(() => onFaceTurnComplete.OnNext(Unit.Default));
 
         Direction = direction;
-        animeController.SkeletonFlip(direction);
     }
 
     /// <summary>

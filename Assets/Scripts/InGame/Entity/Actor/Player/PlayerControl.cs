@@ -8,10 +8,12 @@ using UniRx;
 /// </summary>
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] private ActorAnimeController animeController = default;
     [SerializeField] private Movement movement = default;
     [SerializeField] private FaceDirection faceDirection = default;
     [SerializeField] private Interactor interactor = default;
     [SerializeField] private Capturable capturable = default;
+    
 
     private bool canControl = true;
 
@@ -38,7 +40,11 @@ public class PlayerControl : MonoBehaviour
 
         ActorDirection inputDirection = CheckInputDirection();
         InputMoveControl(inputDirection);
-        InputInteract();
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            InputInteract();
+        }
     }
 
     /// <summary>
@@ -84,10 +90,9 @@ public class PlayerControl : MonoBehaviour
         //プレイヤーが何らかの行動中なら、入力を先行入力として保持し、終了。
         if (turnManager.IsActing)
         {
-            ActorDirection inputBuffer = direction;
             turnManager.OnSolveInputBuffer
                 .First()
-                .Subscribe(_ => SolveBufferInput(inputBuffer));
+                .Subscribe(_ => InputMoveControl(direction));
             return;
         }
 
@@ -95,6 +100,7 @@ public class PlayerControl : MonoBehaviour
         if (direction != faceDirection.Direction)
         {
             faceDirection.TurnToDirection(direction, 0.1f);
+            animeController.SkeletonFlip(direction);
             return;
         }
 
@@ -114,43 +120,17 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void InputInteract()
     {
-        if (!Input.GetKeyDown(KeyCode.F))
-        {
-            return;
-        }
-
         //プレイヤーが何らかの行動中なら、入力を先行入力として保持し、終了。
-        //TODO とりあえず入力無視してるだけ。キーコードを引数にする仕組みが欲しいな……。
         if (turnManager.IsActing)
         {
-            ActorDirection inputBuffer = ActorDirection.None;
             _ = turnManager.OnSolveInputBuffer
                 .First()
-                .Subscribe(_ => SolveBufferInput(inputBuffer));
-            return;
-        }
-
-        turnManager.TurnStart(TurnManager.TurnBaseTime);
-
-        //インタラクト対象が無い場合、無視。
-        if (!interactor.HasTouchable())
-        {
-            //音とか鳴らすかも。
+                .Subscribe(_ => InputInteract());
             return;
         }
 
         interactor.TryInteract();
-    }
 
-    /// <summary>
-    /// 先行入力を保持している場合、それを入力する。
-    /// </summary>
-    private void SolveBufferInput(ActorDirection inputBuffer)
-    {
-        if(inputBuffer == ActorDirection.None)
-        {
-            return;
-        }
-        InputMoveControl(inputBuffer);
+        turnManager.TurnStart(TurnManager.TurnBaseTime);
     }
 }
