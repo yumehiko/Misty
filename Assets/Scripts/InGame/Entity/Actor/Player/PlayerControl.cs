@@ -100,7 +100,7 @@ public class PlayerControl : MonoBehaviour
         if (direction != faceDirection.Direction)
         {
             faceDirection.TurnToDirection(direction, 0.1f);
-            animeController.SkeletonFlip(direction);
+            animeController.SetSkeletonDirection(direction);
             return;
         }
 

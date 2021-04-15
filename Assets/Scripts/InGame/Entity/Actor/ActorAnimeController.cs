@@ -12,25 +12,40 @@ public class ActorAnimeController : MonoBehaviour
     [SerializeField] private Animator animator = default;
 
     private int aKeyDoStep = default;
+    private int aKeyDirection = default;
 
     private void Awake()
     {
         aKeyDoStep = Animator.StringToHash("DoStep");
+        aKeyDirection = Animator.StringToHash("Direction");
     }
 
-    /// <summary>
-    /// スケルトンの向きを反映する。
-    /// </summary>
-    public void SkeletonFlip(ActorDirection direction)
+    public void SetSkeletonDirection(ActorDirection direction)
     {
-        if (direction == ActorDirection.Right)
+        if(direction == ActorDirection.Up)
         {
+            animator.SetInteger(aKeyDirection, 2);
             skeletonMecanim.skeleton.ScaleX = 1.0f;
             return;
         }
 
-        if (direction == ActorDirection.Left)
+        if (direction == ActorDirection.Down)
         {
+            animator.SetInteger(aKeyDirection, 0);
+            skeletonMecanim.skeleton.ScaleX = 1.0f;
+            return;
+        }
+
+        if (direction == ActorDirection.Right)
+        {
+            animator.SetInteger(aKeyDirection, 1);
+            skeletonMecanim.skeleton.ScaleX = 1.0f;
+            return;
+        }
+
+        if(direction == ActorDirection.Left)
+        {
+            animator.SetInteger(aKeyDirection, 1);
             skeletonMecanim.skeleton.ScaleX = -1.0f;
             return;
         }

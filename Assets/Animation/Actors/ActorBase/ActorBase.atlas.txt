@@ -1,0 +1,195 @@
+
+ActorBase.png
+size: 491,269
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+CaptureBag
+  rotate: false
+  xy: 2, 85
+  size: 146, 182
+  orig: 148, 184
+  offset: 1, 1
+  index: -1
+E-Direction/E-BodyLower
+  rotate: true
+  xy: 456, 167
+  size: 52, 26
+  orig: 54, 28
+  offset: 1, 1
+  index: -1
+E-Direction/E-BodyUpper
+  rotate: false
+  xy: 208, 16
+  size: 34, 34
+  orig: 36, 36
+  offset: 1, 1
+  index: -1
+E-Direction/E-BoneGuide
+  rotate: true
+  xy: 208, 52
+  size: 29, 49
+  orig: 31, 51
+  offset: 1, 1
+  index: -1
+E-Direction/E-Ear
+  rotate: false
+  xy: 458, 137
+  size: 21, 28
+  orig: 23, 30
+  offset: 1, 1
+  index: -1
+E-Direction/E-EyeOpen
+  rotate: true
+  xy: 410, 115
+  size: 44, 46
+  orig: 46, 48
+  offset: 1, 1
+  index: -1
+E-Direction/E-Eyebrow
+  rotate: false
+  xy: 426, 10
+  size: 22, 11
+  orig: 24, 13
+  offset: 1, 1
+  index: -1
+E-Direction/E-HairFront
+  rotate: false
+  xy: 150, 107
+  size: 132, 160
+  orig: 134, 162
+  offset: 1, 1
+  index: -1
+E-Direction/E-Head
+  rotate: false
+  xy: 284, 23
+  size: 100, 90
+  orig: 102, 92
+  offset: 1, 1
+  index: -1
+S-Direction/S-ArmLeft
+  rotate: false
+  xy: 200, 2
+  size: 20, 12
+  orig: 22, 14
+  offset: 1, 1
+  index: -1
+S-Direction/S-ArmRight
+  rotate: false
+  xy: 222, 2
+  size: 20, 12
+  orig: 22, 14
+  offset: 1, 1
+  index: -1
+S-Direction/S-BackHair
+  rotate: false
+  xy: 284, 115
+  size: 124, 152
+  orig: 126, 154
+  offset: 1, 1
+  index: -1
+S-Direction/S-BodyLower
+  rotate: false
+  xy: 136, 6
+  size: 62, 26
+  orig: 64, 28
+  offset: 1, 1
+  index: -1
+S-Direction/S-BodyUpper
+  rotate: true
+  xy: 456, 221
+  size: 46, 33
+  orig: 48, 35
+  offset: 1, 1
+  index: -1
+S-Direction/S-BoneGuide
+  rotate: false
+  xy: 136, 34
+  size: 70, 47
+  orig: 72, 49
+  offset: 1, 1
+  index: -1
+S-Direction/S-Ear
+  rotate: false
+  xy: 150, 83
+  size: 116, 22
+  orig: 118, 24
+  offset: 1, 1
+  index: -1
+S-Direction/S-EyeClose
+  rotate: false
+  xy: 336, 11
+  size: 88, 10
+  orig: 90, 12
+  offset: 1, 1
+  index: -1
+S-Direction/S-EyeOpen
+  rotate: true
+  xy: 410, 161
+  size: 106, 44
+  orig: 108, 46
+  offset: 1, 1
+  index: -1
+S-Direction/S-Eyebrow
+  rotate: false
+  xy: 244, 10
+  size: 90, 11
+  orig: 92, 13
+  offset: 1, 1
+  index: -1
+S-Direction/S-HairFront
+  rotate: false
+  xy: 2, 5
+  size: 132, 78
+  orig: 134, 80
+  offset: 1, 1
+  index: -1
+S-Direction/S-Head
+  rotate: false
+  xy: 386, 23
+  size: 100, 90
+  orig: 102, 92
+  offset: 1, 1
+  index: -1
+S-Direction/S-LegLeft
+  rotate: false
+  xy: 450, 11
+  size: 13, 10
+  orig: 15, 12
+  offset: 1, 1
+  index: -1
+S-Direction/S-LegRight
+  rotate: false
+  xy: 465, 11
+  size: 13, 10
+  orig: 15, 12
+  offset: 1, 1
+  index: -1
+S-Direction/S-ShoulderLeft
+  rotate: false
+  xy: 458, 115
+  size: 25, 20
+  orig: 27, 22
+  offset: 1, 1
+  index: -1
+S-Direction/S-ShoulderRight
+  rotate: true
+  xy: 244, 25
+  size: 25, 20
+  orig: 27, 22
+  offset: 1, 1
+  index: -1
+S-Direction/S-ThighLeft
+  rotate: false
+  xy: 268, 87
+  size: 14, 18
+  orig: 16, 20
+  offset: 1, 1
+  index: -1
+S-Direction/S-ThighRight
+  rotate: false
+  xy: 268, 67
+  size: 14, 18
+  orig: 16, 20
+  offset: 1, 1
+  index: -1

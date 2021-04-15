@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        animeController.SkeletonFlip(direction);
+        animeController.SetSkeletonDirection(direction);
         animeController.StepAnime();
 
         _ = transform.DOMove(angle * unit, duration)

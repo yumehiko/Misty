@@ -1,90 +1,83 @@
 
 Misty.png
-size: 157,615
+size: 468,171
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 ArmLeft
   rotate: false
-  xy: 143, 30
-  size: 12, 31
-  orig: 14, 33
+  xy: 450, 2
+  size: 16, 35
+  orig: 18, 37
   offset: 1, 1
   index: -1
 ArmRight
-  rotate: false
-  xy: 144, 135
-  size: 11, 31
-  orig: 13, 33
+  rotate: true
+  xy: 304, 3
+  size: 11, 39
+  orig: 13, 41
   offset: 1, 1
   index: -1
 Body
-  rotate: true
-  xy: 2, 10
-  size: 51, 63
-  orig: 53, 65
-  offset: 1, 1
+  rotate: false
+  xy: 369, 71
+  size: 70, 98
+  orig: 70, 98
+  offset: 0, 0
   index: -1
 CaptureBag
-  rotate: false
-  xy: 2, 423
-  size: 153, 190
-  orig: 192, 288
-  offset: 17, 33
+  rotate: true
+  xy: 2, 3
+  size: 166, 214
+  orig: 168, 216
+  offset: 1, 1
   index: -1
 EyeClose
   rotate: false
-  xy: 2, 63
-  size: 140, 103
-  orig: 142, 105
+  xy: 218, 2
+  size: 84, 12
+  orig: 86, 14
   offset: 1, 1
   index: -1
 EyeOpen
   rotate: false
-  xy: 2, 168
-  size: 144, 103
-  orig: 146, 105
+  xy: 369, 39
+  size: 91, 30
+  orig: 93, 32
   offset: 1, 1
   index: -1
 Head
-  rotate: true
-  xy: 2, 273
-  size: 148, 151
-  orig: 150, 153
+  rotate: false
+  xy: 218, 16
+  size: 149, 153
+  orig: 151, 155
   offset: 1, 1
   index: -1
 LegLeft
   rotate: true
-  xy: 106, 34
-  size: 27, 35
-  orig: 29, 37
+  xy: 369, 6
+  size: 31, 28
+  orig: 33, 30
   offset: 1, 1
   index: -1
 LegRight
-  rotate: true
-  xy: 67, 37
-  size: 24, 37
-  orig: 26, 39
-  offset: 1, 1
-  index: -1
-Neck
-  rotate: true
-  xy: 67, 7
-  size: 28, 32
-  orig: 30, 34
+  rotate: false
+  xy: 399, 8
+  size: 29, 29
+  orig: 31, 31
   offset: 1, 1
   index: -1
 ShoulderLeft
   rotate: false
-  xy: 134, 2
-  size: 21, 26
-  orig: 23, 28
+  xy: 430, 4
+  size: 18, 33
+  orig: 20, 35
   offset: 1, 1
   index: -1
 ShoulderRight
-  rotate: true
-  xy: 101, 10
-  size: 22, 31
-  orig: 24, 33
+  rotate: false
+  xy: 441, 143
+  size: 18, 26
+  orig: 20, 28
   offset: 1, 1
   index: -1

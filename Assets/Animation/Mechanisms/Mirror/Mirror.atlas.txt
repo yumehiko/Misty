@@ -1,20 +1,20 @@
 
 Mirror.png
-size: 310,216
+size: 322,164
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Body
   rotate: false
-  xy: 164, 18
-  size: 144, 196
-  orig: 146, 198
+  xy: 176, 6
+  size: 144, 156
+  orig: 146, 158
   offset: 1, 1
   index: -1
 Outline
-  rotate: false
+  rotate: true
   xy: 2, 2
-  size: 160, 212
-  orig: 162, 214
+  size: 160, 172
+  orig: 162, 174
   offset: 1, 1
   index: -1

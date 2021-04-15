@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: PillarDoor_SkeletonData
+  m_Name: ActorBase_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: daeb45989bdda4cd094ce1a21008bb2c, type: 2}
+  - {fileID: 11400000, guid: 3a1254a86ae8e4b9cb8157f9e63a7c9f, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: f065a8c7b6773410d81df5bf59743ee0, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: ae86f53b2b5224a4cba4dd6ece3fa466, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 6eff17454a36044a497bd520d2ad88f8, type: 2}
+  controller: {fileID: 9100000, guid: bc5f2c015559d40fb80d393eb4426769, type: 2}

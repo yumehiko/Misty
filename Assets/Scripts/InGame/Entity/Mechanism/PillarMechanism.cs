@@ -12,10 +12,15 @@ public class PillarMechanism : MechanismBase
     [SerializeField] private Animator animator = default;
     private EvilSightManager evilSightManager;
 
-    private void Start()
+    private int aKeyDoOPen;
+    private int aKeyDoClose;
+
+    private void Awake()
     {
         RegisterSwitches();
         evilSightManager = GameObject.FindWithTag("LevelManager").GetComponent<EvilSightManager>();
+        aKeyDoClose = Animator.StringToHash("DoClose");
+        aKeyDoOPen = Animator.StringToHash("DoOpen");
     }
 
     /// <summary>
@@ -23,7 +28,7 @@ public class PillarMechanism : MechanismBase
     /// </summary>
     protected override void ActiveMachanism()
     {
-        animator.SetTrigger("DoOpen");
+        animator.SetTrigger(aKeyDoOPen);
         colliderObject.SetActive(false);
 
         ReScanPathFinder();
@@ -39,7 +44,7 @@ public class PillarMechanism : MechanismBase
     /// </summary>
     protected override void DeActiveMechanism()
     {
-        animator.SetTrigger("DoClose");
+        animator.SetTrigger(aKeyDoClose);
         colliderObject.SetActive(true);
 
         ReScanPathFinder();

@@ -60,7 +60,7 @@ public class DetectPlayer : MonoBehaviour
         {
             exclamationMark.color = Color.white;
             exclamationMark.DOFade(0.0f, 0.5f);
-            actorAnime.SkeletonFlip(XDiffToDirection(transform.position, PlayerTransform.position));
+            actorAnime.SetSkeletonDirection(XDiffToDirection(transform.position, PlayerTransform.position));
         }
     }
 
