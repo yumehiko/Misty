@@ -98,10 +98,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8309276519311355959}
+  - component: {fileID: 3123981761522197757}
   - component: {fileID: 8309276519311355963}
   - component: {fileID: 8309276519311355956}
+  - component: {fileID: 77486743}
   - component: {fileID: 8309276519311355962}
   - component: {fileID: 8309276519311355957}
+  - component: {fileID: 8275747898179065231}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Untagged
@@ -117,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8309276519311355958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.28, y: -2.4, z: 0}
+  m_LocalPosition: {x: 0.48, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8309276519645615015}
@@ -126,6 +129,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &3123981761522197757
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309276519311355958}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &8309276519311355963
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -152,6 +176,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01de201d35c134d419d0c6433633db93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &77486743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309276519311355958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ad5cc5bc7684171854c933d8e14b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8309276519645615013}
@@ -181,7 +217,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchable: {fileID: 8309276519311355956}
+  interactable: {fileID: 77486743}
   faceDirection: {fileID: 8309276519311355962}
+--- !u!114 &8275747898179065231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309276519311355958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1613986ea1f6b45fca5bb49db8a03425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8309276519520178001
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +289,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.72
+  m_PointLightInnerRadius: 0.32
   m_PointLightOuterRadius: 0.96
   m_PointLightDistance: 3
   m_PointLightQuality: 1

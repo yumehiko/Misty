@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 994174335957421820}
   - component: {fileID: 994174335957421819}
   - component: {fileID: 994174335957421818}
+  - component: {fileID: 4736144185763848146}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -124,7 +125,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994174335957421797}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -288,6 +289,18 @@ MonoBehaviour:
   petrifyUIAnimator: {fileID: 994174336008198262}
   petrifyUIFill: {fileID: 994174337659094448}
   endurance: 3
+--- !u!114 &4736144185763848146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994174335957421797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1613986ea1f6b45fca5bb49db8a03425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &994174336008198267
 GameObject:
   m_ObjectHideFlags: 0

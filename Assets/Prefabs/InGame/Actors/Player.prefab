@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 2586012296069470881}
   - component: {fileID: 2586012296069470882}
   - component: {fileID: 2586012296069470888}
+  - component: {fileID: 9198141701164994795}
   - component: {fileID: 2586012296069470883}
   - component: {fileID: 2586012296069470880}
   m_Layer: 0
@@ -138,7 +139,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2586012296069470889}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -226,6 +227,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1309625740284146052}
+--- !u!114 &9198141701164994795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586012296069470889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1613986ea1f6b45fca5bb49db8a03425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2586012296069470883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +350,7 @@ GameObject:
   - component: {fileID: 1309625740284146052}
   - component: {fileID: 1700011244584068761}
   - component: {fileID: 4326929686486029707}
+  - component: {fileID: 4820097423947948826}
   m_Layer: 0
   m_Name: AnimationBody
   m_TagString: Untagged
@@ -476,4 +490,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonMecanim: {fileID: 1700011244584068761}
+  animator: {fileID: 1309625740284146052}
+--- !u!114 &4820097423947948826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675622857313588265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3e62083b4154b6586b84ea6d8c0614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   animator: {fileID: 1309625740284146052}

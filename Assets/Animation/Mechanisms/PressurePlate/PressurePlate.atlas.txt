@@ -1,0 +1,83 @@
+
+PressurePlate.png
+size: 174,484
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Outline/OutLinePlate
+  rotate: false
+  xy: 2, 276
+  size: 144, 96
+  orig: 194, 224
+  offset: 25, 7
+  index: -1
+Outline/OutLineTop
+  rotate: false
+  xy: 2, 184
+  size: 138, 90
+  orig: 194, 224
+  offset: 28, 34
+  index: -1
+White/Eye1
+  rotate: false
+  xy: 2, 2
+  size: 70, 14
+  orig: 194, 224
+  offset: 62, 68
+  index: -1
+White/Eye2
+  rotate: true
+  xy: 148, 232
+  size: 68, 19
+  orig: 194, 224
+  offset: 63, 63
+  index: -1
+White/Eye3
+  rotate: true
+  xy: 148, 302
+  size: 70, 20
+  orig: 194, 224
+  offset: 62, 62
+  index: -1
+White/Eye4
+  rotate: true
+  xy: 142, 160
+  size: 70, 28
+  orig: 194, 224
+  offset: 62, 60
+  index: -1
+White/Eye5
+  rotate: true
+  xy: 136, 90
+  size: 68, 36
+  orig: 194, 224
+  offset: 63, 60
+  index: -1
+White/Eye6
+  rotate: true
+  xy: 130, 20
+  size: 68, 38
+  orig: 194, 224
+  offset: 63, 60
+  index: -1
+White/Plate
+  rotate: false
+  xy: 2, 98
+  size: 132, 84
+  orig: 194, 224
+  offset: 31, 13
+  index: -1
+White/Top
+  rotate: false
+  xy: 2, 18
+  size: 126, 78
+  orig: 194, 224
+  offset: 34, 40
+  index: -1
+White/Under
+  rotate: false
+  xy: 2, 374
+  size: 156, 108
+  orig: 194, 224
+  offset: 19, 1
+  index: -1

@@ -6,6 +6,7 @@ using UniRx;
 public class LeverSwitch : SwitchBase
 {
     [SerializeField] private Touchable touchable = default;
+    [SerializeField] private Interactable interactable = default;
     [SerializeField] private Animator animator = default;
     private int aKeyIsOn = default;
 
@@ -16,12 +17,22 @@ public class LeverSwitch : SwitchBase
 
     private void Awake()
     {
+        InitSetting();
+    }
+
+    /// <summary>
+    /// 初期設定。
+    /// </summary>
+    private void InitSetting()
+    {
         aKeyIsOn = Animator.StringToHash("IsOn");
 
-        touchable.InteractEvent.Subscribe(_ => SwitchLever(!isOn));
+        touchable.OnTouchEnter.Subscribe(toucher => interactable.RegisterToInteractor(toucher));
+        touchable.OnTouchExit.Subscribe(toucher => interactable.RemoveFromInteractor(toucher));
+        interactable.OnInteract.Subscribe(_ => SwitchLever(!isOn));
 
         //初期状態でOnなら、イベントを発行。
-        if(isOn)
+        if (isOn)
         {
             DoSwitchEvent();
         }

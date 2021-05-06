@@ -12,13 +12,13 @@ public class Interactor : MonoBehaviour
     /// <summary>
     /// インタラクト対象。
     /// </summary>
-    private Touchable target = null;
+    private Interactable target = null;
 
     /// <summary>
     /// ターゲットをセット。
     /// </summary>
     /// <param name="newTarget"></param>
-    public void SetTarget(Touchable newTarget)
+    public void SetTarget(Interactable newTarget)
     {
         target = newTarget;
     }

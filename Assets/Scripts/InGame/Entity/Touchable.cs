@@ -5,56 +5,43 @@ using UniRx;
 
 /// <summary>
 /// 触れて、インタラクトできるもの。それぞれのイベントを発行する。
+/// TODO: Colliderでよくないか？　でも触れても反応したくないものはどうしよう？ tag？
 /// </summary>
 public class Touchable : MonoBehaviour
 {
-    [SerializeField] private Animator animator = default;
-    private int aKeyCanInteract;
+    private Subject<Toucher> onTouchEnter = new Subject<Toucher>();
+    private Subject<Toucher> onTouchExit = new Subject<Toucher>();
 
-    private BoolReactiveProperty isTouch = new BoolReactiveProperty(false);
     /// <summary>
-    /// 触れたときTrue、離れたときFalse。
+    /// Toucherが触れたとき。
     /// </summary>
-    public IReadOnlyReactiveProperty<bool> IsTouch => isTouch;
+    public System.IObservable<Toucher> OnTouchEnter => onTouchEnter;
 
-    private Subject<Interactor> interactEvent = new Subject<Interactor>();
     /// <summary>
-    /// インタラクトしたとき。
+    /// Toucherが離れたとき。
     /// </summary>
-    public System.IObservable<Interactor> InteractEvent => interactEvent;
+    public System.IObservable<Toucher> OnTouchExit => onTouchExit;
 
-    private void Awake()
-    {
-        aKeyCanInteract = Animator.StringToHash("CanInteract");
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //プレイヤーに触れたとき、インタラクトターゲットに自身を登録する。
-        if(collision.gameObject.CompareTag("Player"))
+        Toucher toucher = collision.GetComponent<Toucher>();
+        if (toucher == null)
         {
-            collision.GetComponent<Interactor>().SetTarget(this);
-            animator.SetBool(aKeyCanInteract, true);
-            isTouch.Value = true;
+            return;
         }
+
+        onTouchEnter.OnNext(toucher);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //プレイヤーが離れたとき、インタラクトターゲットを削除。
-        if (collision.gameObject.CompareTag("Player"))
+        Toucher toucher = collision.GetComponent<Toucher>();
+        if (toucher == null)
         {
-            collision.GetComponent<Interactor>().RemoveTarget();
-            animator.SetBool(aKeyCanInteract, false);
-            isTouch.Value = false;
+            return;
         }
-    }
 
-    /// <summary>
-    /// インタラクトを実行する。
-    /// </summary>
-    public void DoInteract(Interactor interactor)
-    {
-        interactEvent.OnNext(interactor);
+        onTouchExit.OnNext(toucher);
     }
 }

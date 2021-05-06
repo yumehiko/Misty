@@ -80,6 +80,8 @@ public class TurnManager : MonoBehaviour
         turnCount++;
         onDetectPlayer.OnNext(Unit.Default);
         onPathFind.OnNext(Unit.Default);
+
+        //ターン動作（アニメーションや移動）の実行。
         IsActing = true;
         TurnTween = DOVirtual.DelayedCall(duration, () => TurnEnd());
     }
@@ -92,7 +94,11 @@ public class TurnManager : MonoBehaviour
         onEvilSightReflesh.OnNext(Unit.Default);
         onCapture.OnNext(Unit.Default);
         onPetrify.OnNext(Unit.Default);
+
+        //ターン動作実行完了。
         IsActing = false;
+
+        //先行入力の確認。
         onSolveInputBuffer.OnNext(Unit.Default);
     }
 

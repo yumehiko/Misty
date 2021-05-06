@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+/// <summary>
+/// 鏡。配置でき、邪眼視界を持つ。
+/// </summary>
 public class Mirror : Item
 {
     [SerializeField] private FaceDirection faceDirection = default;
 
-    public override void PlaceOnGround(Inventory inventory)
+    protected override void InitSetting()
     {
-        gameObject.SetActive(true);
-        transform.position = inventory.transform.position;
+        base.InitSetting();
+        onPlace.Subscribe(inventory => SetFaceDirection(inventory));
+    }
 
+    /// <summary>
+    /// 鏡の向きを配置者と同じ向きに設定する。
+    /// </summary>
+    /// <param name="inventory"></param>
+    private void SetFaceDirection(Inventory inventory)
+    {
         FaceDirection faceDirection = inventory.GetComponent<FaceDirection>();
         this.faceDirection.TurnToDirection(faceDirection.Direction, 0.0f);
     }

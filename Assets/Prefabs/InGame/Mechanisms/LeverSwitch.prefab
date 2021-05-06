@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6999718975781047089}
   - component: {fileID: 6999718975781047094}
   - component: {fileID: 6999718975781047091}
+  - component: {fileID: 8312481138093046794}
   - component: {fileID: 6999718975781047088}
   m_Layer: 0
   m_Name: LeverSwitch
@@ -62,6 +63,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01de201d35c134d419d0c6433633db93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8312481138093046794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999718975781047095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ad5cc5bc7684171854c933d8e14b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   animator: {fileID: 6999718976089935600}
 --- !u!114 &6999718975781047088
 MonoBehaviour:
@@ -76,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchable: {fileID: 6999718975781047091}
+  interactable: {fileID: 8312481138093046794}
   animator: {fileID: 6999718976089935600}
   isOn: 0
 --- !u!1 &6999718976089935607
