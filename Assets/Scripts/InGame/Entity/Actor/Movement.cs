@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     /// <param name="point"></param>
     public void MoveToDirection(ActorDirection direction, float duration)
     {
-        const float unit = 0.96f;
+        const float unit = 1.92f;
         Vector2 angle = DirectionToVector2(direction);
 
         if(!CheckCanMove(angle))

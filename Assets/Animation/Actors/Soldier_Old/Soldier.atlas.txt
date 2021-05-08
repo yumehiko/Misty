@@ -1,0 +1,90 @@
+
+Soldier.png
+size: 647,170
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ArmLeft
+  rotate: true
+  xy: 566, 7
+  size: 18, 38
+  orig: 20, 40
+  offset: 1, 1
+  index: -1
+ArmRight
+  rotate: true
+  xy: 606, 5
+  size: 15, 39
+  orig: 17, 41
+  offset: 1, 1
+  index: -1
+Body
+  rotate: false
+  xy: 583, 89
+  size: 58, 79
+  orig: 58, 79
+  offset: 0, 0
+  index: -1
+CaptureBag
+  rotate: true
+  xy: 2, 2
+  size: 166, 214
+  orig: 168, 216
+  offset: 1, 1
+  index: -1
+EyeClose
+  rotate: false
+  xy: 534, 27
+  size: 83, 11
+  orig: 85, 13
+  offset: 1, 1
+  index: -1
+EyeOpen
+  rotate: false
+  xy: 440, 2
+  size: 92, 36
+  orig: 94, 38
+  offset: 1, 1
+  index: -1
+Head
+  rotate: false
+  xy: 440, 40
+  size: 141, 128
+  orig: 143, 130
+  offset: 1, 1
+  index: -1
+LegLeft
+  rotate: true
+  xy: 614, 56
+  size: 31, 28
+  orig: 33, 30
+  offset: 1, 1
+  index: -1
+LegRight
+  rotate: false
+  xy: 583, 58
+  size: 29, 29
+  orig: 31, 31
+  offset: 1, 1
+  index: -1
+Petrify
+  rotate: true
+  xy: 218, 26
+  size: 142, 220
+  orig: 145, 222
+  offset: 2, 1
+  index: -1
+ShoulderLeft
+  rotate: true
+  xy: 534, 6
+  size: 19, 30
+  orig: 21, 32
+  offset: 1, 1
+  index: -1
+ShoulderRight
+  rotate: false
+  xy: 619, 22
+  size: 20, 32
+  orig: 22, 34
+  offset: 1, 1
+  index: -1

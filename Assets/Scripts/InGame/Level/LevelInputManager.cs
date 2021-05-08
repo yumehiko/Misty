@@ -15,12 +15,11 @@ public class LevelInputManager : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// このレベルをリスタートする。
     /// </summary>
     private void RestartLevel()
     {
-        LoadManager.LoadManagerInstance.RestartScene();
+        LoadManager.Instance.RestartScene();
     }
 }

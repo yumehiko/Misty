@@ -5,6 +5,7 @@ using UniRx;
 
 public class SoundConfig : MonoBehaviour
 {
+    [SerializeField] private PauseMenu pauseMenu = default;
     [SerializeField] private AudioMixer audioMixer = default;
     [SerializeField] private Slider masterSlider = default;
     [SerializeField] private Slider musicSlider = default;
@@ -14,10 +15,10 @@ public class SoundConfig : MonoBehaviour
     private readonly string aKeyMusicVolume = "MusicVolume";
     private readonly string aKeySoundVolume = "SoundVolume";
 
-    private void Start()
+    private void Awake()
     {
         LoadPrefs();
-        _ = PauseMenu.PauseMenuInstance.OnPause
+        _ = pauseMenu.OnPause
             .Where(isActive => isActive == false)
             .Subscribe(isActive => SaveToPrefs());
     }

@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LoadManager : MonoBehaviour
 {
-    public static LoadManager LoadManagerInstance { get; private set; } = default;
+    public static LoadManager Instance { get; private set; } = default;
 
     private void Awake()
     {
-        if (LoadManagerInstance == null)
+        if (Instance == null)
         {
-            LoadManagerInstance = this;
+            Instance = this;
         }
     }
 
@@ -24,5 +24,14 @@ public class LoadManager : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /// <summary>
+    /// 指定したシーンをロード。
+    /// </summary>
+    /// <param name="scene"></param>
+    public void LoadScene(SceneReference scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
