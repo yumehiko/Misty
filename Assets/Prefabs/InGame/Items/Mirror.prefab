@@ -190,7 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ad5cc5bc7684171854c933d8e14b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8309276519645615013}
 --- !u!114 &8309276519311355962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchable: {fileID: 8309276519311355956}
   interactable: {fileID: 77486743}
+  animator: {fileID: 8309276519645615013}
   faceDirection: {fileID: 8309276519311355962}
 --- !u!114 &8275747898179065231
 MonoBehaviour:

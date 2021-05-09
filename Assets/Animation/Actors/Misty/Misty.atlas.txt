@@ -1,6 +1,6 @@
 
 Misty.png
-size: 586,269
+size: 597,269
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -11,68 +11,61 @@ CaptureBag/CaptureBag
   orig: 194, 290
   offset: 20, 6
   index: -1
-E-Direction/E-BackHair
-  rotate: false
-  xy: 260, 62
-  size: 92, 47
-  orig: 194, 290
-  offset: 58, 49
-  index: -1
-E-Direction/E-BodyLower
-  rotate: false
-  xy: 406, 35
-  size: 52, 25
-  orig: 194, 290
-  offset: 76, 25
-  index: -1
-E-Direction/E-BodyUpper
-  rotate: false
-  xy: 537, 13
-  size: 33, 33
-  orig: 194, 290
-  offset: 87, 43
-  index: -1
-E-Direction/E-BoneGuide
-  rotate: true
-  xy: 342, 4
-  size: 29, 49
-  orig: 194, 290
-  offset: 88, 19
-  index: -1
 E-Direction/E-Ear
-  rotate: false
-  xy: 260, 111
+  rotate: true
+  xy: 175, 80
   size: 22, 28
   orig: 194, 290
   offset: 55, 73
   index: -1
 E-Direction/E-EyeClose
-  rotate: false
-  xy: 233, 11
+  rotate: true
+  xy: 124, 11
   size: 72, 14
   orig: 194, 290
   offset: 83, 89
   index: -1
 E-Direction/E-EyeOpen
   rotate: false
-  xy: 258, 27
+  xy: 474, 132
   size: 82, 33
   orig: 194, 290
   offset: 77, 82
   index: -1
+E-Direction/E-EyeWhite
+  rotate: true
+  xy: 98, 5
+  size: 78, 24
+  orig: 194, 290
+  offset: 79, 89
+  index: -1
 E-Direction/E-Eyebrow
   rotate: false
-  xy: 170, 2
+  xy: 148, 2
   size: 56, 9
   orig: 194, 290
   offset: 92, 116
   index: -1
-E-Direction/E-HairFront
+E-Direction/E-HairBack
   rotate: true
-  xy: 147, 28
+  xy: 498, 38
+  size: 92, 47
+  orig: 194, 290
+  offset: 58, 49
+  index: -1
+E-Direction/E-HairFront
+  rotate: false
+  xy: 366, 20
   size: 46, 109
   orig: 194, 290
   offset: 47, 56
+  index: -1
+E-Direction/E-HairMiddle
+  rotate: false
+  xy: 206, 3
+  size: 134, 126
+  orig: 194, 290
+  offset: 33, 53
   index: -1
 E-Direction/E-Head
   rotate: false
@@ -81,199 +74,255 @@ E-Direction/E-Head
   orig: 194, 290
   offset: 62, 65
   index: -1
-E-Direction/E-MiddleHair
+E-Direction/E-Mouth
   rotate: false
-  xy: 150, 141
-  size: 134, 126
+  xy: 124, 5
+  size: 22, 4
   orig: 194, 290
-  offset: 33, 53
+  offset: 111, 73
+  index: -1
+E-Direction/E-MouthOpen
+  rotate: true
+  xy: 150, 86
+  size: 16, 8
+  orig: 194, 290
+  offset: 115, 71
+  index: -1
+E-Direction/E-PupilLeft
+  rotate: true
+  xy: 573, 58
+  size: 24, 22
+  orig: 194, 290
+  offset: 134, 90
+  index: -1
+E-Direction/E-PupilRight
+  rotate: true
+  xy: 396, 131
+  size: 26, 24
+  orig: 194, 290
+  offset: 84, 89
+  index: -1
+E-Direction/E-Torso
+  rotate: false
+  xy: 558, 136
+  size: 33, 33
+  orig: 194, 290
+  offset: 87, 43
+  index: -1
+E-Direction/E-Waist
+  rotate: false
+  xy: 151, 104
+  size: 52, 25
+  orig: 194, 290
+  offset: 76, 25
   index: -1
 N-Direction/N-ArmLeft
   rotate: true
-  xy: 572, 23
+  xy: 175, 13
   size: 23, 12
   orig: 194, 290
   offset: 122, 53
   index: -1
 N-Direction/N-ArmRight
   rotate: true
-  xy: 307, 2
+  xy: 189, 13
   size: 23, 12
   orig: 194, 290
   offset: 49, 53
   index: -1
-N-Direction/N-BackHair
-  rotate: false
-  xy: 286, 146
+N-Direction/N-HairFront
+  rotate: true
+  xy: 273, 131
   size: 136, 121
   orig: 194, 290
-  offset: 31, 59
-  index: -1
-N-Direction/N-BodyLower
-  rotate: false
-  xy: 342, 35
-  size: 62, 25
-  orig: 194, 290
-  offset: 66, 25
-  index: -1
-S-Direction/S-BodyLower
-  rotate: false
-  xy: 342, 35
-  size: 62, 25
-  orig: 194, 290
-  offset: 66, 25
-  index: -1
-N-Direction/N-BodyUpper
-  rotate: false
-  xy: 354, 85
-  size: 32, 24
-  orig: 194, 290
-  offset: 81, 44
-  index: -1
-N-Direction/N-BoneGuide
-  rotate: true
-  xy: 98, 13
-  size: 70, 47
-  orig: 194, 290
-  offset: 62, 19
-  index: -1
-S-Direction/S-BoneGuide
-  rotate: true
-  xy: 98, 13
-  size: 70, 47
-  orig: 194, 290
-  offset: 62, 19
+  offset: 27, 59
   index: -1
 N-Direction/N-Head
   rotate: true
-  xy: 490, 48
+  xy: 496, 171
   size: 96, 82
   orig: 194, 290
   offset: 49, 63
   index: -1
 N-Direction/N-ShoulderLeft
   rotate: false
-  xy: 354, 64
+  xy: 175, 59
   size: 27, 19
   orig: 194, 290
   offset: 103, 50
   index: -1
 N-Direction/N-ShoulderRight
   rotate: false
-  xy: 460, 41
+  xy: 175, 38
   size: 27, 19
   orig: 194, 290
   offset: 64, 50
   index: -1
+N-Direction/N-Torso
+  rotate: true
+  xy: 547, 50
+  size: 32, 24
+  orig: 194, 290
+  offset: 81, 44
+  index: -1
+N-Direction/N-Waist
+  rotate: false
+  xy: 418, 2
+  size: 62, 25
+  orig: 194, 290
+  offset: 66, 25
+  index: -1
+S-Direction/S-Waist
+  rotate: false
+  xy: 418, 2
+  size: 62, 25
+  orig: 194, 290
+  offset: 66, 25
+  index: -1
 S-Direction/S-ArmLeft
   rotate: true
-  xy: 572, 2
+  xy: 580, 11
   size: 19, 12
   orig: 194, 290
   offset: 126, 53
   index: -1
 S-Direction/S-ArmRight
-  rotate: false
-  xy: 321, 13
+  rotate: true
+  xy: 582, 115
   size: 19, 12
   orig: 194, 290
   offset: 49, 53
   index: -1
-S-Direction/S-BackHair
-  rotate: false
-  xy: 424, 146
-  size: 136, 121
-  orig: 194, 290
-  offset: 31, 59
-  index: -1
-S-Direction/S-BodyUpper
-  rotate: false
-  xy: 489, 13
-  size: 46, 33
-  orig: 194, 290
-  offset: 74, 43
-  index: -1
 S-Direction/S-Ear
   rotate: true
-  xy: 562, 153
+  xy: 342, 15
   size: 114, 22
   orig: 194, 290
   offset: 40, 85
   index: -1
 S-Direction/S-EyeClose
-  rotate: false
-  xy: 147, 13
+  rotate: true
+  xy: 160, 18
   size: 84, 13
   orig: 194, 290
   offset: 55, 89
   index: -1
 S-Direction/S-EyeOpen
-  rotate: false
-  xy: 286, 111
+  rotate: true
+  xy: 461, 167
   size: 100, 33
   orig: 194, 290
   offset: 47, 77
   index: -1
-S-Direction/S-Eyebrow
+S-Direction/S-EyeWhite
   rotate: false
-  xy: 98, 2
+  xy: 482, 3
+  size: 96, 24
+  orig: 194, 290
+  offset: 49, 84
+  index: -1
+S-Direction/S-Eyebrow
+  rotate: true
+  xy: 140, 13
   size: 70, 9
   orig: 194, 290
   offset: 62, 111
   index: -1
+S-Direction/S-HairBack
+  rotate: true
+  xy: 150, 131
+  size: 136, 121
+  orig: 194, 290
+  offset: 31, 59
+  index: -1
 S-Direction/S-HairFront
-  rotate: false
-  xy: 150, 76
+  rotate: true
+  xy: 396, 159
   size: 108, 63
   orig: 194, 290
   offset: 43, 95
   index: -1
 S-Direction/S-Head
-  rotate: false
-  xy: 388, 62
+  rotate: true
+  xy: 414, 29
   size: 100, 82
   orig: 194, 290
   offset: 47, 63
   index: -1
 S-Direction/S-LegLeft
   rotate: false
-  xy: 393, 2
+  xy: 364, 3
   size: 12, 10
   orig: 194, 290
   offset: 100, 15
   index: -1
 S-Direction/S-LegRight
-  rotate: false
-  xy: 407, 2
+  rotate: true
+  xy: 582, 101
   size: 12, 10
   orig: 194, 290
   offset: 82, 15
   index: -1
+S-Direction/S-Mouth
+  rotate: true
+  xy: 151, 62
+  size: 22, 4
+  orig: 194, 290
+  offset: 86, 73
+  index: -1
+S-Direction/S-MouthOpen
+  rotate: false
+  xy: 342, 3
+  size: 20, 10
+  orig: 194, 290
+  offset: 87, 70
+  index: -1
+S-Direction/S-PupilLeft
+  rotate: true
+  xy: 422, 131
+  size: 26, 24
+  orig: 194, 290
+  offset: 114, 83
+  index: -1
+S-Direction/S-PupilRight
+  rotate: true
+  xy: 448, 131
+  size: 26, 24
+  orig: 194, 290
+  offset: 54, 83
+  index: -1
 S-Direction/S-ShoulderLeft
   rotate: false
-  xy: 393, 14
+  xy: 547, 29
   size: 24, 19
   orig: 194, 290
   offset: 110, 50
   index: -1
 S-Direction/S-ShoulderRight
-  rotate: false
-  xy: 419, 14
+  rotate: true
+  xy: 573, 32
   size: 24, 19
   orig: 194, 290
   offset: 60, 50
   index: -1
 S-Direction/S-ThighLeft
-  rotate: false
-  xy: 445, 15
+  rotate: true
+  xy: 378, 4
   size: 14, 18
   orig: 194, 290
   offset: 99, 17
   index: -1
 S-Direction/S-ThighRight
-  rotate: false
-  xy: 461, 21
+  rotate: true
+  xy: 398, 4
   size: 14, 18
   orig: 194, 290
   offset: 81, 17
+  index: -1
+S-Direction/S-Torso
+  rotate: true
+  xy: 547, 84
+  size: 46, 33
+  orig: 194, 290
+  offset: 74, 43
   index: -1

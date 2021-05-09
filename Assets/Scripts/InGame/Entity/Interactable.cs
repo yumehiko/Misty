@@ -8,27 +8,11 @@ using UniRx;
 /// </summary>
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private Animator animator = default;
-    private int aKeyCanInteract;
-
     private Subject<Interactor> onInteract = new Subject<Interactor>();
     /// <summary>
     /// インタラクトしたとき。
     /// </summary>
     public System.IObservable<Interactor> OnInteract => onInteract;
-
-    private void Awake()
-    {
-        InitSetting();
-    }
-
-    /// <summary>
-    /// 初期設定。
-    /// </summary>
-    private void InitSetting()
-    {
-        aKeyCanInteract = Animator.StringToHash("CanInteract");
-    }
 
     /// <summary>
     /// 対象がInteractorなら、対象に自身を登録する。
@@ -43,7 +27,6 @@ public class Interactable : MonoBehaviour
         }
 
         interactor.SetTarget(this);
-        animator.SetBool(aKeyCanInteract, true);
     }
 
     /// <summary>
@@ -59,7 +42,6 @@ public class Interactable : MonoBehaviour
         }
 
         interactor.RemoveTarget();
-        animator.SetBool(aKeyCanInteract, false);
     }
 
     /// <summary>

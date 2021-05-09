@@ -8,7 +8,7 @@ using UniRx;
 /// </summary>
 public abstract class Item : MonoBehaviour
 {
-    [SerializeField] private Touchable touchable = default;
+    [SerializeField] protected Touchable touchable = default;
     [SerializeField] protected Interactable interactable = default;
 
     protected Subject<Inventory> onPlace = new Subject<Inventory>();
@@ -26,18 +26,13 @@ public abstract class Item : MonoBehaviour
     /// このオブジェクトのための初期設定。
     /// Awakeの代わりに使う。
     /// </summary>
-    protected virtual void InitSetting()
-    {
-        touchable.OnTouchEnter.Subscribe(toucher => interactable.RegisterToInteractor(toucher));
-        touchable.OnTouchExit.Subscribe(toucher => interactable.RemoveFromInteractor(toucher));
-        interactable.OnInteract.Subscribe(interactor => TryPickUpItem(interactor));
-    }
+    protected abstract void InitSetting();
 
     /// <summary>
     /// このアイテムをインベントリに入れる。
     /// </summary>
     /// <param name="interactor"></param>
-    private void TryPickUpItem(Interactor interactor)
+    protected void TryPickUpItem(Interactor interactor)
     {
         Inventory inventory = interactor.GetComponent<Inventory>();
 

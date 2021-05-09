@@ -220,7 +220,7 @@ MonoBehaviour:
   - {x: -0.83, y: -0.48, z: 0}
   m_ShapePathHash: -1891557251
   m_Mesh: {fileID: 0}
-  m_InstanceId: 49430
+  m_InstanceId: 22372
 --- !u!1 &4953036504177547260
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4953036504177547260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48, y: -2.4, z: 0}
+  m_LocalPosition: {x: 0.96, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2167768047964111909}

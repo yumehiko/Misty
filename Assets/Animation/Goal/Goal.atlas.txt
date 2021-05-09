@@ -1,0 +1,41 @@
+
+Goal.png
+size: 472,180
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Circle
+  rotate: false
+  xy: 180, 18
+  size: 160, 160
+  orig: 194, 194
+  offset: 17, 17
+  index: -1
+Eye1
+  rotate: false
+  xy: 342, 39
+  size: 104, 49
+  orig: 194, 194
+  offset: 45, 72
+  index: -1
+EyeClose
+  rotate: false
+  xy: 342, 3
+  size: 104, 34
+  orig: 194, 194
+  offset: 45, 66
+  index: -1
+EyeOpen
+  rotate: false
+  xy: 342, 90
+  size: 128, 88
+  orig: 194, 194
+  offset: 33, 59
+  index: -1
+Outline
+  rotate: false
+  xy: 2, 2
+  size: 176, 176
+  orig: 194, 194
+  offset: 9, 9
+  index: -1

@@ -8,12 +8,18 @@ using UniRx;
 /// </summary>
 public class Mirror : Item
 {
+    [SerializeField] private Animator animator = default;
+    private int aKeyCanInteract;
+
     [SerializeField] private FaceDirection faceDirection = default;
 
     protected override void InitSetting()
     {
-        base.InitSetting();
+        touchable.OnTouchEnter.Subscribe(toucher => OnTouchEnter(toucher));
+        touchable.OnTouchExit.Subscribe(toucher => OnTouchExit(toucher));
+        interactable.OnInteract.Subscribe(interactor => TryPickUpItem(interactor));
         onPlace.Subscribe(inventory => SetFaceDirection(inventory));
+        aKeyCanInteract = Animator.StringToHash("CanInteract");
     }
 
     /// <summary>
@@ -24,5 +30,25 @@ public class Mirror : Item
     {
         FaceDirection faceDirection = inventory.GetComponent<FaceDirection>();
         this.faceDirection.TurnToDirection(faceDirection.Direction, 0.0f);
+    }
+
+    /// <summary>
+    /// 触れたとき。
+    /// </summary>
+    /// <param name="toucher"></param>
+    private void OnTouchEnter(Toucher toucher)
+    {
+        interactable.RegisterToInteractor(toucher);
+        animator.SetBool(aKeyCanInteract, true);
+    }
+
+    /// <summary>
+    /// 離れたとき。
+    /// </summary>
+    /// <param name="toucher"></param>
+    private void OnTouchExit(Toucher toucher)
+    {
+        interactable.RemoveFromInteractor(toucher);
+        animator.SetBool(aKeyCanInteract, false);
     }
 }

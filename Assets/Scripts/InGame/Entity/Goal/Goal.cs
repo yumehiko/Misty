@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
-public class LeverSwitch : SwitchBase
+public class Goal : MonoBehaviour
 {
     [SerializeField] private Touchable touchable = default;
     [SerializeField] private Interactable interactable = default;
     [SerializeField] private Animator animator = default;
-    private int aKeyIsOn = default;
+    private int aKeyDoGoal = default;
     private int aKeyCanInteract;
-
-    /// <summary>
-    /// レバーがOnか。
-    /// </summary>
-    [SerializeField] private bool isOn = false;
 
     private void Awake()
     {
@@ -26,36 +21,21 @@ public class LeverSwitch : SwitchBase
     /// </summary>
     private void InitSetting()
     {
-        aKeyIsOn = Animator.StringToHash("IsOn");
+        aKeyDoGoal = Animator.StringToHash("DoGoal");
         aKeyCanInteract = Animator.StringToHash("CanInteract");
 
         touchable.OnTouchEnter.Subscribe(toucher => OnTouchEnter(toucher));
         touchable.OnTouchExit.Subscribe(toucher => OnTouchExit(toucher));
-        interactable.OnInteract.Subscribe(_ => SwitchLever(!isOn));
-
-        //初期状態でOnなら、イベントを発行。
-        if (isOn)
-        {
-            DoSwitchEvent();
-        }
+        interactable.OnInteract.Subscribe(_ => GoalLevel());
     }
 
     /// <summary>
-    /// レバーの状態を指定する。
+    /// このレベルをゴールする。
     /// </summary>
-    private void SwitchLever(bool switchTo)
+    private void GoalLevel()
     {
-        isOn = switchTo;
-        DoSwitchEvent();
-    }
-
-    /// <summary>
-    /// 状態に応じたイベントを発行。
-    /// </summary>
-    private void DoSwitchEvent()
-    {
-        switchEvent.OnNext(isOn);
-        animator.SetBool(aKeyIsOn, isOn);
+        Debug.Log("Goal");
+        animator.SetTrigger(aKeyDoGoal);
     }
 
     /// <summary>
