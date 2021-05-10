@@ -13,12 +13,13 @@ public class EvilSightManager : MonoBehaviour
     public List<SeeTarget> SeeTargets { get; private set; } = new List<SeeTarget>();
 
     private Subject<Unit> onRefleshEvilSight = new Subject<Unit>();
+    private Subject<Unit> onRefleshSeeTarget = new Subject<Unit>();
+
     /// <summary>
     /// EvilSight更新タイミング。
     /// </summary>
     public System.IObservable<Unit> OnRefleshEvilSight => onRefleshEvilSight;
 
-    private Subject<Unit> onRefleshSeeTarget = new Subject<Unit>();
     /// <summary>
     /// SeeTarget更新タイミング。
     /// </summary>

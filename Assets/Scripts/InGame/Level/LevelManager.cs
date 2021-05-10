@@ -5,8 +5,10 @@ using UnityEngine;
 /// <summary>
 /// レベルに関連するプレイヤーの入力。
 /// </summary>
-public class LevelInputManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private SceneReference nextScene = default;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -21,5 +23,13 @@ public class LevelInputManager : MonoBehaviour
     private void RestartLevel()
     {
         LoadManager.Instance.RestartScene();
+    }
+
+    /// <summary>
+    /// このレベルをクリアする。
+    /// </summary>
+    public void BeatThisLevel()
+    {
+        LoadManager.Instance.LoadScene(nextScene);
     }
 }

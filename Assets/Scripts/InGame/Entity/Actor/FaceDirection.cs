@@ -23,7 +23,7 @@ public class FaceDirection : MonoBehaviour
 {
     [SerializeField] private Transform sightTransform = default;
 
-    public ActorDirection Direction { get; private set; } = ActorDirection.Up;
+    public ActorDirection Direction { get; private set; } = ActorDirection.Down;
 
     private Subject<Unit> onFaceTurnComplete = new Subject<Unit>();
     /// <summary>

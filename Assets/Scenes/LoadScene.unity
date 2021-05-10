@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstScene:
-    sceneAsset: {fileID: 102900000, guid: babbd7ac6edfb480b984bf06a5cf10ef, type: 3}
-    scenePath: Assets/Scenes/DebugRoom.unity
+    sceneAsset: {fileID: 102900000, guid: 4958ea6c1b60c4c198da853baf84b2bf, type: 3}
+    scenePath: Assets/Scenes/01.unity
 --- !u!1001 &1450075055
 PrefabInstance:
   m_ObjectHideFlags: 0

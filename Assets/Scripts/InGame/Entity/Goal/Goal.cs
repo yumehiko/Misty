@@ -36,6 +36,8 @@ public class Goal : MonoBehaviour
     {
         Debug.Log("Goal");
         animator.SetTrigger(aKeyDoGoal);
+        var levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        levelManager.BeatThisLevel();
     }
 
     /// <summary>
